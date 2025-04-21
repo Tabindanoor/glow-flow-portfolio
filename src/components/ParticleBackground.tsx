@@ -24,7 +24,9 @@ const Particles = ({ count, mouse }: ParticlesProps) => {
   
   useEffect(() => {
     if (points.current && points.current.geometry) {
-      initialPositions.current = points.current.geometry.attributes.position.array.slice();
+      // Create a new Float32Array from the source array to ensure type consistency
+      const positionAttribute = points.current.geometry.attributes.position.array;
+      initialPositions.current = new Float32Array(positionAttribute);
     }
   }, []);
 
