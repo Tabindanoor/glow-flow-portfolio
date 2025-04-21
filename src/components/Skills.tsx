@@ -4,6 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { fadeInUp } from '@/lib/animations';
+import { useMemo } from 'react';
 
 interface Skill {
   name: string;

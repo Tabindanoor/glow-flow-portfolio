@@ -38,8 +38,8 @@ const AnimatedText = () => {
       >
         Portfolio
         <meshStandardMaterial
-          color="#00F5FF"
-          emissive="#00F5FF"
+          color={"#00F5FF"}
+          emissive={"#00F5FF"}
           emissiveIntensity={0.5}
           metalness={0.8}
           roughness={0.2}

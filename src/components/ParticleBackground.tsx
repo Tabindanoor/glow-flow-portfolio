@@ -63,7 +63,7 @@ const Particles = ({ count, mouse }: ParticlesProps) => {
     <Points ref={points} positions={particlesPosition} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#9B5DE5"
+        color={"#9B5DE5"}
         size={0.06}
         sizeAttenuation
         depthWrite={false}

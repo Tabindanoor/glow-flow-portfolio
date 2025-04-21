@@ -34,11 +34,11 @@ const ProjectCard3D = ({ project, isHovered }: { project: Project; isHovered: bo
   return (
     <mesh ref={mesh} position={[0, 0, 0]} castShadow receiveShadow>
       <boxGeometry args={[3, 2, 0.1]} />
-      <meshStandardMaterial 
+      <meshStandardMaterial
         map={texture}
         metalness={0.5}
         roughness={0.3}
-        color={isHovered ? "#9B5DE5" : "#6930C3"} 
+        color={isHovered ? "#9B5DE5" : "#6930C3"}
       />
     </mesh>
   );
