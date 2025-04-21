@@ -1,10 +1,8 @@
-
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { fadeInUp } from '@/lib/animations';
-import { useMemo } from 'react';
 
 interface Skill {
   name: string;
@@ -27,7 +25,6 @@ const SkillSphere = ({ skills, hoveredSkill, onHover }: SkillSphereProps) => {
     }
   });
 
-  // Create a distribution of points on a sphere
   const points = useMemo(() => {
     const pts = [];
     const sphereRadius = 2.5;
@@ -79,9 +76,6 @@ const SkillSphere = ({ skills, hoveredSkill, onHover }: SkillSphereProps) => {
     </group>
   );
 };
-
-// Need to add this import at the top
-import { useMemo } from 'react';
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
