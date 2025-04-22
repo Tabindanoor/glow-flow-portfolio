@@ -13,18 +13,16 @@ const Particles = ({ count, mouse }: ParticlesProps) => {
   const points = useRef<THREE.Points>(null!);
   const initialPositions = useRef<Float32Array | null>(null);
   
-  // Generate random particles
   const particlesPosition = new Float32Array(count * 3);
   for (let i = 0; i < count; i++) {
     const i3 = i * 3;
-    particlesPosition[i3] = (Math.random() - 0.5) * 15;
+    particlesPosition[i3] = (Math.random() - 0.5) * 20; // Increased spread
     particlesPosition[i3 + 1] = (Math.random() - 0.5) * 15;
-    particlesPosition[i3 + 2] = (Math.random() - 0.5) * 15;
+    particlesPosition[i3 + 2] = (Math.random() - 0.5) * 10;
   }
   
   useEffect(() => {
     if (points.current && points.current.geometry) {
-      // Create a new Float32Array from the source array to ensure type consistency
       const positionAttribute = points.current.geometry.attributes.position.array;
       initialPositions.current = new Float32Array(positionAttribute);
     }
@@ -39,20 +37,20 @@ const Particles = ({ count, mouse }: ParticlesProps) => {
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
       
-      // Apply sine wave animation for floating effect with varied frequencies
-      positions[i3] = initialPositions.current[i3] + Math.sin(time * 0.3 + i * 0.05) * 0.15;
-      positions[i3 + 1] = initialPositions.current[i3 + 1] + Math.sin(time * 0.5 + i * 0.1) * 0.2;
-      positions[i3 + 2] = initialPositions.current[i3 + 2] + Math.sin(time * 0.4 + i * 0.07) * 0.15;
+      // Enhanced wave animation
+      positions[i3] = initialPositions.current[i3] + Math.sin(time * 0.4 + i * 0.02) * 0.2;
+      positions[i3 + 1] = initialPositions.current[i3 + 1] + Math.cos(time * 0.3 + i * 0.03) * 0.3;
+      positions[i3 + 2] = initialPositions.current[i3 + 2] + Math.sin(time * 0.5 + i * 0.04) * 0.2;
       
-      // Apply subtle mouse attraction
+      // Enhanced mouse interaction
       if (mouse.current.x !== 0 && mouse.current.y !== 0) {
-        const mouseX = mouse.current.x * 10;
-        const mouseY = -mouse.current.y * 10;
+        const mouseX = mouse.current.x * 15;
+        const mouseY = -mouse.current.y * 15;
         const dx = mouseX - positions[i3];
         const dy = mouseY - positions[i3 + 1];
         const dz = -5 - positions[i3 + 2];
         const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        const force = 0.02 / Math.max(0.5, distance);
+        const force = 0.05 / Math.max(0.5, distance);
         
         positions[i3] += dx * force;
         positions[i3 + 1] += dy * force;
@@ -63,7 +61,6 @@ const Particles = ({ count, mouse }: ParticlesProps) => {
     points.current.geometry.attributes.position.needsUpdate = true;
   });
 
-  // Create a gradient effect with multiple point materials
   return (
     <>
       <Points ref={points} positions={particlesPosition} stride={3} frustumCulled={false}>
@@ -84,7 +81,7 @@ const Particles = ({ count, mouse }: ParticlesProps) => {
           sizeAttenuation
           depthWrite={false}
           blending={THREE.AdditiveBlending}
-          opacity={0.4}
+          opacity={0.6}
         />
       </Points>
     </>
@@ -101,19 +98,16 @@ const ParticleBackground = () => {
     };
     
     window.addEventListener('mousemove', updateMousePosition);
-    
-    return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-    };
+    return () => window.removeEventListener('mousemove', updateMousePosition);
   }, []);
 
   return (
     <div className="canvas-container">
-      <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+      <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
         <ambientLight intensity={0.5} />
-        <Particles count={3000} mouse={mousePosition} />
+        <Particles count={4000} mouse={mousePosition} />
       </Canvas>
-      <div className="gradient-overlay" />
+      <div className="gradient-overlay bg-gradient-to-b from-dark/0 via-dark/70 to-dark" />
     </div>
   );
 };

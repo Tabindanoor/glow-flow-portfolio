@@ -11,15 +11,16 @@ const AnimatedText = () => {
   
   useFrame((state) => {
     if (mesh.current) {
+      // Smoother rotation based on mouse movement
       mesh.current.rotation.y = THREE.MathUtils.lerp(
         mesh.current.rotation.y,
-        (state.mouse.x * Math.PI) / 10,
-        0.05
+        (state.mouse.x * Math.PI) / 8,
+        0.075
       );
       mesh.current.rotation.x = THREE.MathUtils.lerp(
         mesh.current.rotation.x,
-        (state.mouse.y * Math.PI) / 10,
-        0.05
+        (state.mouse.y * Math.PI) / 8,
+        0.075
       );
     }
   });
@@ -28,21 +29,21 @@ const AnimatedText = () => {
     <mesh ref={mesh} position={[0, 0, 0]}>
       <Text3D
         font="/fonts/Inter_Bold.json"
-        size={1.5}
-        height={0.2}
-        curveSegments={12}
+        size={1.2}
+        height={0.3}
+        curveSegments={24}
         bevelEnabled
-        bevelThickness={0.02}
-        bevelSize={0.02}
+        bevelThickness={0.05}
+        bevelSize={0.04}
         bevelOffset={0}
-        bevelSegments={5}
+        bevelSegments={10}
       >
         Portfolio
         <meshStandardMaterial
           color={"#00F5FF"}
           emissive={"#00F5FF"}
-          emissiveIntensity={0.5}
-          metalness={0.8}
+          emissiveIntensity={0.8}
+          metalness={1}
           roughness={0.2}
         />
       </Text3D>
@@ -121,19 +122,21 @@ const Hero = () => {
         <div className="w-full h-[300px] sm:h-[400px] animate-float">
           <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
             <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={1} />
+            <pointLight position={[10, 10, 10]} intensity={2} />
             <spotLight 
               position={[0, 10, 0]} 
               angle={0.3} 
               penumbra={1} 
-              intensity={1} 
+              intensity={1.5} 
               castShadow
             />
             <AnimatedText />
             <OrbitControls 
               enableZoom={false} 
               enablePan={false} 
-              enableRotate={false} 
+              enableRotate={false}
+              minPolarAngle={Math.PI / 2}
+              maxPolarAngle={Math.PI / 2}
             />
           </Canvas>
         </div>
