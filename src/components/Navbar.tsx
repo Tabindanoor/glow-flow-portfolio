@@ -24,7 +24,15 @@ const Navbar = () => {
     }
   };
 
-  const navItems = ['about', 'projects', 'skills', 'testimonials', 'contact'];
+  const navItems = [
+    'about',
+    'education',
+    'experience',
+    'skills',
+    'achievements',
+    'projects',
+    'contact'
+  ];
 
   return (
     <nav
@@ -44,7 +52,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <button
                 key={item}
