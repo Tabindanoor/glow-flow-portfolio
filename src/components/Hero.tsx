@@ -5,6 +5,7 @@ import { Text3D, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { ArrowDown } from 'lucide-react';
+import Globe from './Globe';
 
 const AnimatedText = () => {
   const mesh = useRef<THREE.Mesh>(null!);
@@ -87,12 +88,21 @@ const Hero = () => {
       ref={heroRef}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
         <div className="flex flex-col items-center text-center mb-8">
+
+        <p 
+            className="text-4xl font-space font-bold text-white"
+          >
+            I am <span className="text-gradient"> Tabinda noor</span>
+          </p>
+
+
           <h1 
             ref={headingRef}
-            className="text-4xl sm:text-6xl md:text-7xl font-bold font-space mb-6 animate-glow"
+            className="text-4xl sm:text-6xl md:text-5xl font-bold font-space my-6 animate-glow"
           >
-            Creative <span className="text-gradient">Developer</span>
+            MERN Stack <span className="text-gradient">Developer</span>
           </h1>
           
           <p 
@@ -119,37 +129,13 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="w-full h-[300px] sm:h-[400px] animate-float">
-          <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={2} />
-            <spotLight 
-              position={[0, 10, 0]} 
-              angle={0.3} 
-              penumbra={1} 
-              intensity={1.5} 
-              castShadow
-            />
-            <AnimatedText />
-            <OrbitControls 
-              enableZoom={false} 
-              enablePan={false} 
-              enableRotate={false}
-              minPolarAngle={Math.PI / 2}
-              maxPolarAngle={Math.PI / 2}
-            />
-          </Canvas>
-        </div>
-      </div>
       
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-        <p className="text-gray-400 mb-2">Scroll Down</p>
-        <ArrowDown className="h-6 w-6 text-neon-cyan" />
       </div>
       
       {/* Decorative gradient shapes */}
       <div className="absolute top-1/4 -left-32 w-64 h-64 rounded-full bg-neon-purple/20 blur-[100px]" />
       <div className="absolute bottom-1/4 -right-32 w-64 h-64 rounded-full bg-neon-cyan/20 blur-[100px]" />
+
     </section>
   );
 };

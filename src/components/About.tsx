@@ -8,6 +8,13 @@ import Education from './sections/Education';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Achievements from './sections/Achievements';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import { Suspense } from 'react';
+import { useGLTF } from '@react-three/drei';
+import Globe from './Globe';
+import picture from "../../public/picture.jpg"
+import resume from "../../public/resume.pdf"
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,26 +43,39 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
+  // components/ComputerModel.jsx
+
+
+
+
+
+
+
+
   return (
     <section 
       id="about" 
       ref={sectionRef}
       className="py-20 bg-gradient-to-b from-dark to-dark/95"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-24 space-y-32">
         {/* About Me Section */}
         <div>
           <h2 ref={headingRef} className="section-heading text-center">
             About <span className="text-neon-cyan">Me</span>
           </h2>
+
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-16">
-            <div ref={imageRef} className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden neon-border">
-                <div className="w-full h-full bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 flex items-center justify-center">
-                  <User className="w-32 h-32 text-neon-cyan" />
-                </div>
-              </div>
+            {/* <div ref={imageRef} className="relative"> */}
+            <div>
+              {/* <div className="rounded-2xl neon-border"> */}
+                {/* <div className=" h-full bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 flex items-center justify-center"> */}
+                  {/* <User className="w-32 h-32 text-neon-cyan" /> */}
+                  <img src={picture} width={"400px"} className='rounded-2xl neon-border' height={"300px"}
+                  alt="" />
+                {/* </div> */}
+              {/* </div> */}
               
               <Card className="absolute -bottom-6 -right-6 bg-card/80 backdrop-blur-sm p-4 neon-border">
                 <p className="text-lg font-semibold">
@@ -63,7 +83,6 @@ const About = () => {
                 </p>
               </Card>
             </div>
-            
             <div ref={textRef} className="space-y-6">
               <div className="space-y-4">
                 <h3 className="text-3xl font-space font-bold text-white">
@@ -106,18 +125,14 @@ const About = () => {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button
-                  variant="default"
-                  className="bg-neon-purple hover:bg-neon-purple/90 text-white gap-2"
-                  onClick={() => window.open('/path-to-your-cv.pdf', '_blank')}
-                >
-                  <Download className="h-4 w-4" />
-                  Download CV
-                </Button>
+                
+                <a  href={resume}  download="Resume"  className="inline-flex items-center justify-center gap-2 bg-neon-purple hover:bg-neon-purple/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+              <Download className="h-4 w-4" />  Download CV</a>
 
-                <div className="flex gap-4">
+
+                <div className="flex gap-4 ">
                   <a
-                    href="https://github.com/TabindaTabbi"
+                    href="https://github.com/Tabindanoor"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-neon-cyan transition-colors duration-300"
@@ -125,7 +140,7 @@ const About = () => {
                     <Github className="h-6 w-6" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/tabinda-noor"
+                    href="https://www.linkedin.com/in/tabinda-noor-935429237/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-neon-cyan transition-colors duration-300"
