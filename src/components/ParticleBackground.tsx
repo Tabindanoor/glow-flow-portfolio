@@ -39,8 +39,10 @@ const Particles = ({ count, mouse }: ParticlesProps) => {
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
       
-      // Apply sine wave animation for floating effect
+      // Apply sine wave animation for floating effect with varied frequencies
+      positions[i3] = initialPositions.current[i3] + Math.sin(time * 0.3 + i * 0.05) * 0.15;
       positions[i3 + 1] = initialPositions.current[i3 + 1] + Math.sin(time * 0.5 + i * 0.1) * 0.2;
+      positions[i3 + 2] = initialPositions.current[i3 + 2] + Math.sin(time * 0.4 + i * 0.07) * 0.15;
       
       // Apply subtle mouse attraction
       if (mouse.current.x !== 0 && mouse.current.y !== 0) {
@@ -61,17 +63,31 @@ const Particles = ({ count, mouse }: ParticlesProps) => {
     points.current.geometry.attributes.position.needsUpdate = true;
   });
 
+  // Create a gradient effect with multiple point materials
   return (
-    <Points ref={points} positions={particlesPosition} stride={3} frustumCulled={false}>
-      <PointMaterial
-        transparent
-        color={"#9B5DE5"}
-        size={0.06}
-        sizeAttenuation
-        depthWrite={false}
-        blending={THREE.AdditiveBlending}
-      />
-    </Points>
+    <>
+      <Points ref={points} positions={particlesPosition} stride={3} frustumCulled={false}>
+        <PointMaterial
+          transparent
+          color="#9B5DE5"
+          size={0.05}
+          sizeAttenuation
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </Points>
+      <Points positions={particlesPosition} stride={3} frustumCulled={false}>
+        <PointMaterial
+          transparent
+          color="#00F5FF"
+          size={0.03}
+          sizeAttenuation
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+          opacity={0.4}
+        />
+      </Points>
+    </>
   );
 };
 
@@ -95,8 +111,9 @@ const ParticleBackground = () => {
     <div className="canvas-container">
       <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
         <ambientLight intensity={0.5} />
-        <Particles count={2000} mouse={mousePosition} />
+        <Particles count={3000} mouse={mousePosition} />
       </Canvas>
+      <div className="gradient-overlay" />
     </div>
   );
 };
