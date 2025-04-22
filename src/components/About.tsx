@@ -1,6 +1,9 @@
 
 import { useEffect, useRef } from 'react';
 import { fadeInUp, fadeInRight, staggerFadeIn } from '@/lib/animations';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Github, Linkedin, Mail, MapPin, Download } from 'lucide-react';
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -51,42 +54,91 @@ const About = () => {
           <div ref={imageRef} className="relative">
             <div className="aspect-square rounded-2xl overflow-hidden neon-border">
               <div className="w-full h-full bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 flex items-center justify-center">
-                <div className="text-7xl">👨‍💻</div>
+                <div className="text-7xl">👩‍💻</div>
               </div>
             </div>
             
-            <div className="absolute -bottom-6 -right-6 bg-card rounded-xl p-4 shadow-lg neon-border">
+            <Card className="absolute -bottom-6 -right-6 bg-card/80 backdrop-blur-sm p-4 neon-border">
               <p className="text-lg font-semibold">
-                <span className="text-neon-cyan">5+</span> Years Experience
+                <span className="text-neon-cyan">MERN Stack</span> Developer
               </p>
-            </div>
+            </Card>
           </div>
           
           <div ref={textRef} className="space-y-6">
-            <p className="text-xl text-gray-300 leading-relaxed">
-              I'm a passionate web developer specializing in creating immersive digital experiences with modern technologies like React, Three.js, and GSAP.
-            </p>
+            <div className="space-y-2">
+              <h3 className="text-2xl font-space font-bold text-white">Who am I?</h3>
+              <p className="text-xl text-gray-300 leading-relaxed">
+                I'm Tabinda Noor, a passionate Software Engineer specializing in MERN Stack Development.
+              </p>
+            </div>
             
-            <p className="text-xl text-gray-300 leading-relaxed">
-              My approach combines technical precision with creative design to build captivating, interactive, and high-performance web applications that stand out.
+            <p className="text-gray-300 leading-relaxed">
+              With a Bachelor's degree in Software Engineering, I bring expertise in Tailwind CSS, MongoDB, Express.js, React.js, and Node.js. 
+              I'm dedicated to creating seamless user experiences and staying updated with the latest technologies, including AI and advanced web development.
             </p>
-            
-            <div className="grid grid-cols-2 gap-6 mt-10">
-              {[
-                { label: "Projects", value: "25+" },
-                { label: "Clients", value: "15+" },
-                { label: "Experience", value: "5+ years" },
-                { label: "Satisfaction", value: "100%" }
-              ].map((stat, index) => (
-                <div 
-                  key={stat.label}
-                  ref={el => statRefs.current[index] = el}
-                  className="neon-card p-4 text-center"
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <p className="text-gray-400">Name:</p>
+                <p className="text-white font-medium">Tabinda Noor</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-gray-400">Location:</p>
+                <p className="text-white font-medium flex items-center gap-1">
+                  <MapPin className="h-4 w-4 text-neon-cyan" />
+                  Faisalabad, Pakistan
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-gray-400">Email:</p>
+                <a 
+                  href="mailto:tabindanoor415@gmail.com"
+                  className="text-white font-medium hover:text-neon-cyan transition-colors duration-300"
                 >
-                  <p className="text-3xl font-bold text-neon-cyan mb-2">{stat.value}</p>
-                  <p className="text-gray-400">{stat.label}</p>
-                </div>
-              ))}
+                  tabindanoor415@gmail.com
+                </a>
+              </div>
+              <div className="space-y-1">
+                <p className="text-gray-400">Role:</p>
+                <p className="text-white font-medium">Software Engineer</p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Button
+                variant="default"
+                className="bg-neon-purple hover:bg-neon-purple/90 text-white gap-2"
+                onClick={() => window.open('/path-to-your-cv.pdf', '_blank')}
+              >
+                <Download className="h-4 w-4" />
+                Download CV
+              </Button>
+
+              <div className="flex gap-4">
+                <a
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-neon-cyan transition-colors duration-300"
+                >
+                  <Github className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-neon-cyan transition-colors duration-300"
+                >
+                  <Linkedin className="h-6 w-6" />
+                </a>
+                <a
+                  href="mailto:tabindanoor415@gmail.com"
+                  className="text-gray-400 hover:text-neon-cyan transition-colors duration-300"
+                >
+                  <Mail className="h-6 w-6" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
