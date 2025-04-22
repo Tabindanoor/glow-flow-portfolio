@@ -37,11 +37,11 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: "GitHub", href: "#", icon: Github },
-    { name: "LinkedIn", href: "#", icon: Linkedin },
-    { name: "Twitter", href: "#", icon: Twitter },
-    { name: "Instagram", href: "#", icon: Instagram },
-    { name: "Email", href: "mailto:hello@portfolio.com", icon: Mail }
+    { name: "GitHub", href: "https://github.com/Tabindanoor", icon: Github },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/tabinda-noor-935429237/", icon: Linkedin },
+    // { name: "Twitter", href: "#", icon: Twitter },
+    { name: "Instagram", href: "https://www.instagram.com/noortabinda/", icon: Instagram },
+    { name: "Email", href: "tabindanoor415@gmail.com", icon: Mail }
   ];
 
   const navLinks = [
@@ -49,7 +49,7 @@ const Footer = () => {
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" }
   ];
 
@@ -104,12 +104,12 @@ const Footer = () => {
             <p className="text-gray-400">Feel free to reach out for collaborations or just a friendly hello</p>
             
             <div className="flex flex-col space-y-2">
-              <a href="mailto:hello@portfolio.com" className="text-gray-400 hover:text-neon-cyan transition-colors duration-300">
-                hello@portfolio.com
+              <a href="mailto:tabindanoor415@gmail.com" className="text-gray-400 hover:text-neon-cyan transition-colors duration-300">
+                tabindanoor415@gmail.com
               </a>
-              <p className="text-gray-400">
+              {/* <p className="text-gray-400">
                 +1 (555) 123-4567
-              </p>
+              </p> */}
             </div>
             
             <button 

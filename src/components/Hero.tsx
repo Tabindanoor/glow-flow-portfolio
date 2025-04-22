@@ -1,11 +1,10 @@
 
 import { useEffect, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Text3D, OrbitControls } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import { Text3D } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { ArrowDown } from 'lucide-react';
-import Globe from './Globe';
 
 const AnimatedText = () => {
   const mesh = useRef<THREE.Mesh>(null!);

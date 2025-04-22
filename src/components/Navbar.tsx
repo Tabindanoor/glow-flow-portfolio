@@ -41,6 +41,7 @@ const Navbar = () => {
         isScrolled ? "bg-dark/80 backdrop-blur-md shadow-lg" : "bg-transparent"
       )}
     >
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <a 

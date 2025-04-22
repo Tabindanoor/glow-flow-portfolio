@@ -1,20 +1,14 @@
 
 import { useEffect, useRef } from 'react';
 import { fadeInUp, fadeInRight, staggerFadeIn } from '@/lib/animations';
-import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Github, Linkedin, Mail, MapPin, Download, School, Briefcase, Code, Award, User } from 'lucide-react';
 import Education from './sections/Education';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Achievements from './sections/Achievements';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import { Suspense } from 'react';
-import { useGLTF } from '@react-three/drei';
-import Globe from './Globe';
-import picture from "../../public/picture.jpg"
-import resume from "../../public/resume.pdf"
+import picture from "/picture.jpg"
+import resume from "/resume.pdf"
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
