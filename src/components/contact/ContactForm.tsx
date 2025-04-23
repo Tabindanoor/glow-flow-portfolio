@@ -1,9 +1,9 @@
 
+import React from 'react';
 import { FormStatus } from '@/hooks/useContactForm';
 
 interface ContactFormProps {
-  formRef: React.RefObject<HTMLFormElement>;
-  elementRef: React.RefObject<HTMLDivElement>;
+  formRef?: React.RefObject<HTMLDivElement>;
   formData: {
     name: string;
     email: string;
@@ -16,7 +16,6 @@ interface ContactFormProps {
 
 const ContactForm: React.FC<ContactFormProps> = ({
   formRef,
-  elementRef,
   formData,
   formStatus,
   handleChange,
@@ -24,11 +23,10 @@ const ContactForm: React.FC<ContactFormProps> = ({
 }) => {
   return (
     <div 
-      ref={elementRef}
+      ref={formRef}
       className="opacity-0"
     >
       <form 
-        ref={formRef}
         onSubmit={handleSubmit}
         className="neon-card p-6 rounded-2xl"
       >

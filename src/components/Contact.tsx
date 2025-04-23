@@ -11,15 +11,19 @@ const Contact = () => {
   
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-  const formElementRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const infoRef = useRef<HTMLDivElement>(null);
+  const formElementRef = useRef<HTMLDivElement>(null);
 
   useIntersectionObserver({
     target: sectionRef,
     onIntersect: () => {
       if (headingRef.current) fadeInUp(headingRef.current);
-      const formElements = formElementRefs.current.filter(Boolean) as HTMLDivElement[];
-      if (formElements.length) staggerFadeIn(formElements, 0.15);
+      
+      const elements = [];
+      if (infoRef.current) elements.push(infoRef.current);
+      if (formElementRef.current) elements.push(formElementRef.current);
+      
+      if (elements.length) staggerFadeIn(elements, 0.15);
     },
     threshold: 0.2,
   });
@@ -36,10 +40,9 @@ const Contact = () => {
         </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
-          <ContactInfo ref={formElementRefs.current[0]} />
+          <ContactInfo ref={infoRef} />
           <ContactForm
-            formRef={formRef}
-            elementRef={formElementRefs.current[1]}
+            formRef={formElementRef}
             formData={formData}
             formStatus={formStatus}
             handleChange={handleChange}
