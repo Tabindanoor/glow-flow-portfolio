@@ -1,134 +1,48 @@
-// import nodemailer from 'nodemailer';
 
-// export default async function handler(req, res) {
-//   if (req.method !== 'POST') {
-//     return res.status(405).end('Method Not Allowed');
-//   }
+import nodemailer from 'nodemailer';
 
-//   const { name, email, message } = req.body;
+export default async function handler(req: any, res: any) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
 
-//   if (!name || !email || !message) {
-//     return res.status(400).json({ success: false, error: 'Missing fields' });
-//   }
+  const { name, email, message } = req.body;
 
-//   try {
-//     const transporter = nodemailer.createTransport({
-//       service: 'gmail',
-//       auth: {
-//         user: process.env.GMAIL_USER,
-//         pass: process.env.GMAIL_PASS,
-//       },
-//     });
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, error: 'Missing required fields' });
+  }
 
-//     await transporter.sendMail({
-//       from: `"${name}" <${email}>`,
-//       to: process.env.RECEIVER_EMAIL,
-//       subject: 'New Contact Form Submission',
-//       text: message,
-//       html: `<p><strong>Name:</strong> ${name}</p>
-//              <p><strong>Email:</strong> ${email}</p>
-//              <p><strong>Message:</strong> ${message}</p>`,
-//     });
-
-//     res.status(200).json({ success: true });
-//   } catch (error) {
-//     console.error('Email error:', error);
-//     res.status(500).json({ success: false, error: 'Internal Server Error' });
-//   }
-// }
-
-
-
-// import nodemailer from 'nodemailer';
-
-// export default async function handler(req, res) {
-//   if (req.method === 'POST') {
-//     const { name, email, message } = req.body;
-
-//     // Create reusable transporter object using SMTP transport
-//     const transporter = nodemailer.createTransport({
-//       service: 'gmail', // or any other email service you prefer
-//       auth: {
-//         user: process.env.EMAIL_USER, // Your email address (e.g., 'your-email@gmail.com')
-//         pass: process.env.EMAIL_PASS, // Your email password or application-specific password
-//       },
-//     });
-
-//     const mailOptions = {
-//       from: email, // Sender address (email from which the message is sent)
-//       to: 'tabindanoor415@gmail.com', // Receiver's email address
-//       subject: `Message from ${name} via Contact Form`,
-//       text: message,
-//       html: `<p><strong>Name:</strong> ${name}</p>
-//              <p><strong>Email:</strong> ${email}</p>
-//              <p><strong>Message:</strong> ${message}</p>`,
-//     };
-
-//     try {
-//       // Send email
-//       await transporter.sendMail(mailOptions);
-//       return res.status(200).json({ message: 'Email sent successfully!' });
-//     } catch (error) {
-//       console.error('Error sending email:', error);
-//       return res.status(500).json({ message: 'Error sending email. Please try again later.' });
-//     }
-//   } else {
-//     // Handle any non-POST request
-//     return res.status(405).json({ message: 'Method Not Allowed' });
-//   }
-// }
-
-
-import nodemailer from "nodemailer";
-import * as handlebars from "handlebars";
-import { welcomeTemplate } from "./templates/welcome";
-
-export async function sendMail({
-  to,
-  name,
-  subject,
-  body,
-}: {
-  to: string;
-  name: string;
-  subject: string;
-  body: string;
-}) {
-  const { SMTP_EMAIL, SMTP_PASSWORD } = process.env;
-
-  const transport = nodemailer.createTransport({
-    service: "gmail",
+  // Create transport
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-      user: SMTP_EMAIL,
-      pass: SMTP_PASSWORD,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
-  try {
-    const testResult = await transport.verify();
-    console.log(testResult);
-  } catch (error) {
-    console.error({ error });
-    return;
-  }
+
+  const mailOptions = {
+    from: `"${name}" <${email}>`,
+    to: process.env.RECEIVER_EMAIL,
+    subject: `New Contact Form Message from ${name}`,
+    html: `
+      <div style="padding: 20px; background-color: #f5f5f5;">
+        <h2 style="color: #333;">New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <div style="background-color: white; padding: 15px; border-radius: 5px;">
+          ${message.replace(/\n/g, '<br>')}
+        </div>
+      </div>
+    `
+  };
 
   try {
-    const sendResult = await transport.sendMail({
-      from: SMTP_EMAIL,
-      to,
-      subject,
-      html: body,
-    });
-    console.log(sendResult);
+    await transporter.sendMail(mailOptions);
+    return res.status(200).json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
-    console.log(error);
+    console.error('Error sending email:', error);
+    return res.status(500).json({ success: false, error: 'Failed to send email' });
   }
-}
-
-export function compileWelcomeTemplate(name: string, url: string) {
-  const template = handlebars.compile(welcomeTemplate);
-  const htmlBody = template({
-    name: name,
-    url: url,
-  });
-  return htmlBody;
 }
