@@ -1,9 +1,69 @@
 
+// import { Award } from 'lucide-react';
+// import { Card } from '@/components/ui/card';
+
+// const Achievements = () => {
+//   const certifications = [
+//     "JavaScript Certification From Coursera",
+//     "MERN Bootcamp Certification (Techloset Solutions)",
+//     "CS50x Puzzle Solver",
+//     "WordSprint 3.0 winner",
+//     "Microsoft C# .NET Training Certification",
+//     "Soft Skills Business Bootcamp",
+//     "Lablab.ai 24 Claude Hackathon",
+//     "Lablab.ai Gemini Hackathon",
+//     "Testing with Selenium (HCC Training Bootcamp)",
+//     "Wordpress Training (DigiSkills)",
+//     "Graphics Designing (DigiSkills)",
+//     "Python Programming (Stanford University Code In Place)",
+//     "Computer Networking Certification",
+//     "Cyber Security Certification",
+//     "NSE-1 and NSE-2 Certification",
+//     "HCIA Security Certification",
+//     "HCIA Cloud Computing Certification"
+//   ];
+
+//   return (
+//     <div className="space-y-8">
+//       <h2 className="section-heading text-center flex items-center justify-center gap-3">
+//         <Award className="h-8 w-8" />
+//         <span>Achievements & Certifications</span>
+//       </h2>
+      
+//       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+//         {certifications.map((cert, index) => (
+//           <Card key={index} className="p-4 neon-card hover:scale-105 transition-transform duration-300">
+//             <p className="text-gray-300">{cert}</p>
+//           </Card>
+//         ))}
+//       </div>
+
+//       <div className="mt-16 text-center space-y-6">
+//         <h3 className="text-2xl font-bold text-white">Know More About Me</h3>
+//         <div className="max-w-3xl mx-auto space-y-4 text-gray-300">
+//           <p>
+//             I have done bachelors in Software Engineering from Government College University Faisalabad.
+//           </p>
+//           <p>
+//             I love to solve complex problems, I love traveling and reading books. I am interested in learning new and innovative skills and want to keep myself updated with the technology trends.
+//           </p>
+//           <p>
+//             I have also joined many remote internships which help me to enhance my skills in the Development.
+//           </p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Achievements;
+
+
+
 import { useEffect, useRef } from 'react';
-import { Award, ExternalLink } from 'lucide-react';
+import { Award } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { fadeInUp, fadeInRight } from '@/lib/animations';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Achievements = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -31,103 +91,24 @@ const Achievements = () => {
   }, []);
 
   const certifications = [
-    {
-      name: "JavaScript Certification From Coursera",
-      link: "https://drive.google.com/file/d/1example1/view",
-      category: "Development"
-    },
-    {
-      name: "MERN Bootcamp Certification (Techloset Solutions)",
-      link: "https://drive.google.com/file/d/1example2/view",
-      category: "Development"
-    },
-    {
-      name: "CS50x Puzzle Solver",
-      link: "https://drive.google.com/file/d/1example3/view",
-      category: "Development"
-    },
-    {
-      name: "WordSprint 3.0 winner",
-      link: "https://drive.google.com/file/d/1example4/view",
-      category: "Achievements"
-    },
-    {
-      name: "Microsoft C# .NET Training Certification",
-      link: "https://drive.google.com/file/d/1example5/view",
-      category: "Development"
-    },
-    {
-      name: "Soft Skills Business Bootcamp",
-      link: "https://drive.google.com/file/d/1example6/view",
-      category: "Business"
-    },
-    {
-      name: "Lablab.ai 24 Claude Hackathon",
-      link: "https://drive.google.com/file/d/1example7/view",
-      category: "Hackathons"
-    },
-    {
-      name: "Lablab.ai Gemini Hackathon",
-      link: "https://drive.google.com/file/d/1example8/view",
-      category: "Hackathons"
-    },
-    {
-      name: "Testing with Selenium (HCC Training Bootcamp)",
-      link: "https://drive.google.com/file/d/1example9/view",
-      category: "Testing"
-    },
-    {
-      name: "Wordpress Training (DigiSkills)",
-      link: "https://drive.google.com/file/d/1example10/view",
-      category: "Development"
-    },
-    {
-      name: "Graphics Designing (DigiSkills)",
-      link: "https://drive.google.com/file/d/1example11/view",
-      category: "Design"
-    },
-    {
-      name: "Python Programming (Stanford University Code In Place)",
-      link: "https://drive.google.com/file/d/1example12/view",
-      category: "Development"
-    },
-    {
-      name: "Computer Networking Certification",
-      link: "https://drive.google.com/file/d/1example13/view",
-      category: "Networking"
-    },
-    {
-      name: "Cyber Security Certification",
-      link: "https://drive.google.com/file/d/1example14/view",
-      category: "Security"
-    },
-    {
-      name: "NSE-1 and NSE-2 Certification",
-      link: "https://drive.google.com/file/d/1example15/view",
-      category: "Security"
-    },
-    {
-      name: "HCIA Security Certification",
-      link: "https://drive.google.com/file/d/1example16/view",
-      category: "Security"
-    },
-    {
-      name: "HCIA Cloud Computing Certification",
-      link: "https://drive.google.com/file/d/1example17/view",
-      category: "Cloud"
-    }
+    "JavaScript Certification From Coursera",
+    "MERN Bootcamp Certification (Techloset Solutions)",
+    "CS50x Puzzle Solver",
+    "WordSprint 3.0 winner",
+    "Microsoft C# .NET Training Certification",
+    "Soft Skills Business Bootcamp",
+    "Lablab.ai 24 Claude Hackathon",
+    "Lablab.ai Gemini Hackathon",
+    "Testing with Selenium (HCC Training Bootcamp)",
+    "Wordpress Training (DigiSkills)",
+    "Graphics Designing (DigiSkills)",
+    "Python Programming (Stanford University Code In Place)",
+    "Computer Networking Certification",
+    "Cyber Security Certification",
+    "NSE-1 and NSE-2 Certification",
+    "HCIA Security Certification",
+    "HCIA Cloud Computing Certification"
   ];
-
-  // Group certifications by category
-  const groupedCertifications = certifications.reduce((acc, cert) => {
-    if (!acc[cert.category]) {
-      acc[cert.category] = [];
-    }
-    acc[cert.category].push(cert);
-    return acc;
-  }, {} as Record<string, typeof certifications>);
-
-  const categories = Object.keys(groupedCertifications);
 
   return (
     <section
@@ -138,38 +119,16 @@ const Achievements = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-24 space-y-20">
         <div>
           <h2 ref={headingRef} className="section-heading text-center flex items-center justify-center gap-3">
-            <Award className="h-8 w-8 text-neon-cyan" />
+            <Award className="h-8 w-8" />
             <span>Achievements & Certifications</span>
           </h2>
 
-          <div ref={textRef} className="mt-16">
-            <Accordion type="single" collapsible className="w-full">
-              {categories.map((category, idx) => (
-                <AccordionItem key={category} value={`item-${idx}`} className="border-b border-neon-cyan/30">
-                  <AccordionTrigger className="text-xl font-bold text-neon-cyan py-4 hover:no-underline">
-                    {category} <span className="ml-2 text-gray-400 text-sm">({groupedCertifications[category].length})</span>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="grid gap-4 sm:grid-cols-2 py-4">
-                      {groupedCertifications[category].map((cert, index) => (
-                        <a 
-                          href={cert.link} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          key={index} 
-                          className="group"
-                        >
-                          <Card className="p-4 neon-card hover:scale-105 transition-transform duration-300 flex items-start justify-between">
-                            <p className="text-gray-300 group-hover:text-white transition-colors">{cert.name}</p>
-                            <ExternalLink className="h-4 w-4 text-neon-purple opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </Card>
-                        </a>
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+          <div ref={textRef} className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-16">
+            {certifications.map((cert, index) => (
+              <Card key={index} className="p-4 neon-card hover:scale-105 transition-transform duration-300">
+                <p className="text-gray-300">{cert}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </div>

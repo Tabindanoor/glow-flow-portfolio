@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
@@ -15,22 +14,14 @@ interface SkillSphereProps {
   skills: Skill[];
   hoveredSkill: string | null;
   onHover: (skill: string | null) => void;
-  mousePosition: { x: number; y: number };
 }
 
-const SkillSphere = ({ skills, hoveredSkill, onHover, mousePosition }: SkillSphereProps) => {
+const SkillSphere = ({ skills, hoveredSkill, onHover }: SkillSphereProps) => {
   const groupRef = useRef<THREE.Group>(null!);
   
   useFrame(({ clock }) => {
     if (groupRef.current) {
-      // Base rotation over time
       groupRef.current.rotation.y = clock.getElapsedTime() * 0.1;
-      
-      // Additional rotation based on mouse position
-      if (mousePosition.x !== 0 || mousePosition.y !== 0) {
-        groupRef.current.rotation.x += (mousePosition.y * 0.01 - groupRef.current.rotation.x) * 0.1;
-        groupRef.current.rotation.y += (mousePosition.x * 0.01 - groupRef.current.rotation.y) * 0.1;
-      }
     }
   });
 
@@ -88,7 +79,6 @@ const SkillSphere = ({ skills, hoveredSkill, onHover, mousePosition }: SkillSphe
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -109,25 +99,13 @@ const Skills = () => {
   ];
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        // Calculate mouse position relative to the center of the section
-        const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-        
-        setMousePosition({ x, y });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {
           if (headingRef.current) fadeInUp(headingRef.current);
           if (contentRef.current) fadeInUp(contentRef.current, 0.3);
+          
           observer.disconnect();
         }
       },
@@ -139,7 +117,6 @@ const Skills = () => {
     }
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       observer.disconnect();
     };
   }, []);
@@ -164,7 +141,6 @@ const Skills = () => {
                 skills={skills} 
                 hoveredSkill={hoveredSkill}
                 onHover={setHoveredSkill}
-                mousePosition={mousePosition}
               />
             </Canvas>
           </div>
