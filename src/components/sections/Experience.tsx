@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { fadeInUp } from '@/lib/animations';
-import { Briefcase, Branch } from 'lucide-react';
+import { Briefcase, GitBranch } from 'lucide-react';
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -85,7 +85,7 @@ const Experience = () => {
                     {/* Branch line to experience */}
                     <div className={`absolute top-3 ${index % 2 === 0 ? 'right-0 left-1/2' : 'left-0 right-1/2'} h-1 bg-gradient-to-${index % 2 === 0 ? 'l' : 'r'} from-transparent to-neon-cyan`}></div>
                     
-                    <Branch className={`text-neon-cyan h-6 w-6 mb-2 ${index % 2 === 0 ? 'self-end' : 'self-start'}`} />
+                    <GitBranch className={`text-neon-cyan h-6 w-6 mb-2 ${index % 2 === 0 ? 'self-end' : 'self-start'}`} />
                     <div className={`neon-card p-6 ${index % 2 === 0 ? 'text-right' : 'text-left'} hover:scale-105 transition-transform duration-300 w-full`}>
                       <h3 className="text-xl font-bold text-neon-cyan mb-2">{exp.role}</h3>
                       <p className="text-white font-medium mb-1">{exp.company}</p>
