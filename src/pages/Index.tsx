@@ -6,9 +6,11 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
-import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Experience from '@/components/sections/Experience';
+import Education from '@/components/sections/Education';
+import Achievements from '@/components/sections/Achievements';
 import { initScrollAnimations } from '@/lib/animations';
 
 const Index = () => {
@@ -32,9 +34,11 @@ const Index = () => {
       <main>
         <Hero />
         <About />
-        <Projects />
         <Skills />
-        {/* <Testimonials /> */}
+        <Experience />
+        <Education />
+        <Achievements />
+        <Projects />
         <Contact />
       </main>
       
