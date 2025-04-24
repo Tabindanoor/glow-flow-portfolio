@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 interface ContactFormData {
   name: string;
@@ -29,29 +30,19 @@ export const useContactForm = () => {
     setFormStatus('submitting');
   
     try {
-      // Use the correct API path (without the base URL)
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
       });
-  
-      const data = await response.json();
-  
-      if (response.ok) {
-        setFormStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-        toast.success('Message sent successfully! I will get back to you soon.');
-      } else {
-        setFormStatus('error');
-        toast.error(data.error || 'Failed to send message. Please try again.');
-      }
+
+      if (error) throw error;
+
+      setFormStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      toast.success('Message sent successfully! I will get back to you soon.');
     } catch (error) {
+      console.error('Error sending message:', error);
       setFormStatus('error');
-      toast.error('Something went wrong. Please try again later.');
-      console.error('Submission error:', error);
+      toast.error('Failed to send message. Please try again.');
     }
   
     setTimeout(() => {
