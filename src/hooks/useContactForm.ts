@@ -29,6 +29,7 @@ export const useContactForm = () => {
     setFormStatus('submitting');
   
     try {
+      // Use the correct API path (without the base URL)
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {

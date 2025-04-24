@@ -1,55 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
-import { fadeInUp, staggerFadeIn } from '@/lib/animations';
 
-type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
+import { useEffect, useRef } from 'react';
+import { fadeInUp, staggerFadeIn } from '@/lib/animations';
+import { useContactForm } from '@/hooks/useContactForm';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const { formData, formStatus, handleChange, handleSubmit } = useContactForm();
   
-  const [formStatus, setFormStatus] = useState<FormStatus>('idle');
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const formElementRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus('submitting');
-  
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (response.ok) {
-        setFormStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setFormStatus('error');
-      }
-    } catch (error) {
-      setFormStatus('error');
-      console.error('Submission error:', error);
-    }
-  
-    // Reset form status after 3 seconds
-    setTimeout(() => {
-      setFormStatus('idle');
-    }, 3000);
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
