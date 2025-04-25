@@ -23,7 +23,7 @@ const Experience = () => {
       description: "With the experience as a web instructor, I have gained invaluable insights into the art of guiding and educating aspiring web developers."
     },
     {
-      role: "Programmer",
+      role: "Python Programmer",
       company: "Corvit Systems Faisalabad",
       period: "25-07-2022 - 20-08-2022",
       description: "Using python programming Language, Manage the instances of AWS using python scripts."
