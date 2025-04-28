@@ -1,8 +1,9 @@
+
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
-import { fadeInUp } from '@/lib/animations';
+import { motion, useInView } from 'framer-motion';
 
 interface Skill {
   name: string;
@@ -80,8 +81,7 @@ const SkillSphere = ({ skills, hoveredSkill, onHover }: SkillSphereProps) => {
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   const skills: Skill[] = [
     { name: "React", icon: "🔵", color: "#61DAFB" },
@@ -98,28 +98,25 @@ const Skills = () => {
     { name: "Figma", icon: "🎨", color: "#F24E1E" }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          if (headingRef.current) fadeInUp(headingRef.current);
-          if (contentRef.current) fadeInUp(contentRef.current, 0.3);
-          
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
     }
+  };
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { type: "spring", stiffness: 100 }
+    }
+  };
 
   return (
     <section 
@@ -128,12 +125,22 @@ const Skills = () => {
       className="py-20 min-h-screen flex items-center bg-gradient-to-b from-dark to-dark/95"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 ref={headingRef} className="section-heading text-center">
+        <motion.h2 
+          className="section-heading text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7 }}
+        >
           My <span className="text-neon-cyan">Skills</span>
-        </h2>
+        </motion.h2>
         
-        <div ref={contentRef} className="mt-16 flex flex-col lg:flex-row items-center gap-10">
-          <div className="w-full lg:w-1/2 h-[400px] lg:h-[500px]">
+        <div className="mt-16 flex flex-col lg:flex-row items-center gap-10">
+          <motion.div 
+            className="w-full lg:w-1/2 h-[400px] lg:h-[500px]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.7 }}
+          >
             <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} intensity={1} />
@@ -143,34 +150,51 @@ const Skills = () => {
                 onHover={setHoveredSkill}
               />
             </Canvas>
-          </div>
+          </motion.div>
           
           <div className="w-full lg:w-1/2 space-y-8">
-            <h3 className="text-2xl font-space font-bold">
+            <motion.h3 
+              className="text-2xl font-space font-bold"
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.7 }}
+            >
               Technical Expertise
-            </h3>
+            </motion.h3>
             
-            <p className="text-gray-300 text-lg">
+            <motion.p 
+              className="text-gray-300 text-lg"
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
               With a strong foundation in both frontend and 3D web technologies, I specialize in creating immersive digital experiences that push the boundaries of what's possible on the web.
-            </p>
+            </motion.p>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <motion.div 
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
               {skills.map((skill) => (
-                <div 
+                <motion.div 
                   key={skill.name}
+                  variants={itemVariants}
                   className={`neon-card p-4 transition-all duration-300 ${
                     hoveredSkill === skill.name 
                       ? 'border-neon-purple shadow-[0_0_15px_rgba(155,93,229,0.5)]' 
                       : ''
                   }`}
+                  whileHover={{ scale: 1.05, y: -5 }}
                 >
                   <div className="flex items-center gap-2">
                     <span role="img" aria-label={skill.name}>{skill.icon}</span>
                     <span className="font-medium">{skill.name}</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

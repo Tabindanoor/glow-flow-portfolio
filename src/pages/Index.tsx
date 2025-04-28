@@ -6,9 +6,10 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
-import Testimonials from '@/components/Testimonials';
+import Services from '@/components/Services';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import CustomCursor from '@/components/CustomCursor';
 import { initScrollAnimations } from '@/lib/animations';
 
 const Index = () => {
@@ -22,6 +23,9 @@ const Index = () => {
   
   return (
     <div className="min-h-screen relative bg-dark">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
       {/* 3D Particle Background */}
       <ParticleBackground />
       
@@ -32,9 +36,9 @@ const Index = () => {
       <main>
         <Hero />
         <About />
+        <Services />
         <Projects />
         <Skills />
-        {/* <Testimonials /> */}
         <Contact />
       </main>
       

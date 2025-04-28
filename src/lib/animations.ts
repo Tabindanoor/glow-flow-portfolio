@@ -57,24 +57,33 @@ export const staggerFadeIn = (elements: Element[], stagger: number = 0.1) => {
 };
 
 export const initScrollAnimations = () => {
-  // Animate sections on scroll
-  gsap.utils.toArray<Element>('.animate-on-scroll').forEach((section) => {
-    gsap.fromTo(
-      section,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
+  // Performance optimization - batch multiple animations into a single animation frame
+  gsap.ticker.lagSmoothing(1000, 16); // Helps with performance during scrolling
+  
+  // Create animation batches
+  const animateElements = () => {
+    // Animate sections on scroll with performance optimizations
+    gsap.utils.toArray<Element>('.animate-on-scroll').forEach((section) => {
+      gsap.fromTo(
+        section,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          }
         }
-      }
-    );
-  });
+      );
+    });
+  };
+
+  // Use requestAnimationFrame for better performance
+  requestAnimationFrame(animateElements);
 };
 
 export const textReveal = (element: Element) => {
@@ -88,5 +97,52 @@ export const textReveal = (element: Element) => {
       duration: 1.2,
       ease: "power4.inOut"
     }
+  );
+};
+
+export const parallaxEffect = (element: Element, speed: number = 0.5) => {
+  gsap.to(element, {
+    y: () => -window.scrollY * speed,
+    ease: "none",
+    scrollTrigger: {
+      trigger: element,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+    }
+  });
+};
+
+// Image reveal animation
+export const imageReveal = (element: Element, delay: number = 0) => {
+  const image = element.querySelector('img');
+  const overlay = document.createElement('div');
+  
+  if (!image) return;
+  
+  overlay.style.position = 'absolute';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = '#0F0E17';
+  overlay.style.zIndex = '1';
+  
+  element.style.position = 'relative';
+  element.style.overflow = 'hidden';
+  element.appendChild(overlay);
+  
+  gsap.to(overlay, {
+    scaleX: 0,
+    transformOrigin: "right",
+    duration: 1.2,
+    delay,
+    ease: "power4.inOut"
+  });
+  
+  gsap.fromTo(
+    image,
+    { scale: 1.2 },
+    { scale: 1, duration: 1.2, delay: delay + 0.3, ease: "power4.out" }
   );
 };
