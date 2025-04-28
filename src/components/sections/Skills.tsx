@@ -1,5 +1,4 @@
-
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Code, Layout, Server, Terminal, Shield, Wrench } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { 
@@ -8,7 +7,7 @@ import {
   HoverCardContent
 } from '@/components/ui/hover-card';
 import { Badge } from '@/components/ui/badge';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Skills = () => {
   const skillCategories = [
@@ -62,12 +61,10 @@ const Skills = () => {
   ];
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
-  // Animation variants
-  const containerVariants = {
+  const container = {
     hidden: { opacity: 0 },
-    visible: {
+    show: {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
@@ -76,56 +73,69 @@ const Skills = () => {
     }
   };
 
-  const itemVariants = {
+  const item = {
     hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
+    show: { 
+      y: 0, 
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
     }
   };
 
   return (
     <div ref={sectionRef} className="space-y-12">
       <motion.h2 
-        className="section-heading text-center flex items-center justify-center gap-3"
         initial={{ opacity: 0, y: -20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        className="section-heading text-center flex items-center justify-center gap-3"
       >
         <Terminal className="h-8 w-8" />
         <span>Tech Stack</span>
       </motion.h2>
       
       <motion.div 
-        className="grid gap-8 md:gap-12"
-        variants={containerVariants}
+        variants={container}
         initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        className="grid gap-8 md:gap-12"
       >
         {skillCategories.map((category, idx) => (
           <motion.div 
             key={idx} 
+            variants={item}
             className="neon-card p-6 space-y-6 hover:scale-[1.02] transition-transform duration-300"
-            variants={itemVariants}
-            whileHover={{ 
-              boxShadow: "0 0 20px rgba(155, 93, 229, 0.4)",
-              transition: { duration: 0.3 }
+            style={{
+              boxShadow: `0 10px 30px -15px rgba(155, 93, 229, 0.2)`,
+              borderRadius: "1rem",
+              backgroundColor: "rgba(15, 14, 23, 0.5)",
+              backdropFilter: "blur(10px)"
+            }}
+            whileHover={{
+              boxShadow: `0 20px 40px -15px rgba(155, 93, 229, 0.4)`,
+              y: -5
             }}
           >
-            <motion.div 
-              className="flex items-center gap-3 mb-6"
-              initial={{ x: -20, opacity: 0 }}
-              animate={isInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 * idx }}
-            >
-              <div className="p-2 rounded-lg bg-neon-purple/10">
+            <div className="flex items-center gap-3 mb-6">
+              <motion.div 
+                className="p-3 rounded-lg bg-neon-purple/10"
+                whileHover={{
+                  backgroundColor: "rgba(155, 93, 229, 0.25)",
+                  rotate: [0, 5, -5, 0],
+                  transition: { duration: 0.5 }
+                }}
+              >
                 {category.icon}
-              </div>
+              </motion.div>
               <h3 className="text-xl font-space font-bold text-white">
                 {category.title}
               </h3>
-            </motion.div>
+            </div>
 
             <div className="grid gap-6">
               {category.skills.map((skill, skillIdx) => (
@@ -133,22 +143,20 @@ const Skills = () => {
                   <HoverCardTrigger asChild>
                     <motion.div 
                       className="space-y-2 cursor-pointer"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                      transition={{ duration: 0.5, delay: 0.1 * skillIdx + 0.3 * idx }}
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
                     >
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-2">
                           <span className="text-white font-medium">{skill.name}</span>
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge variant="secondary" className="text-xs bg-neon-purple/20 text-neon-cyan">
                             {skill.progress}%
                           </Badge>
                         </div>
                       </div>
                       <Progress 
                         value={skill.progress} 
-                        className="h-2 transition-all duration-300 hover:h-3 bg-secondary"
+                        className="h-2 transition-all duration-300 hover:h-3 bg-dark/50 [&>div]:bg-gradient-to-r [&>div]:from-neon-purple [&>div]:to-neon-cyan" 
                       />
                     </motion.div>
                   </HoverCardTrigger>
