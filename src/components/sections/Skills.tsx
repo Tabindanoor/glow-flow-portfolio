@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import { Code, Layout, Server, Terminal, Shield, Wrench } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
@@ -157,8 +156,7 @@ const Skills = () => {
                       </div>
                       <Progress 
                         value={skill.progress} 
-                        className="h-2 transition-all duration-300 hover:h-3" 
-                        indicatorClassName="bg-gradient-to-r from-neon-purple to-neon-cyan"
+                        className="h-2 transition-all duration-300 hover:h-3 bg-dark/50 [&>div]:bg-gradient-to-r [&>div]:from-neon-purple [&>div]:to-neon-cyan" 
                       />
                     </motion.div>
                   </HoverCardTrigger>
