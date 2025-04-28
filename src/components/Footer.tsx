@@ -107,7 +107,9 @@ const Footer = () => {
               <a href="mailto:tabindanoor415@gmail.com" className="text-gray-400 hover:text-neon-cyan transition-colors duration-300">
                 tabindanoor415@gmail.com
               </a>
-             
+              {/* <p className="text-gray-400">
+                +1 (555) 123-4567
+              </p> */}
             </div>
             
             <button 

@@ -1,3 +1,4 @@
+
 import { useRef } from 'react';
 import { Code, Layout, Server, Terminal, Shield, Wrench } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
@@ -7,7 +8,6 @@ import {
   HoverCardContent
 } from '@/components/ui/hover-card';
 import { Badge } from '@/components/ui/badge';
-import { motion } from 'framer-motion';
 
 const Skills = () => {
   const skillCategories = [
@@ -62,76 +62,23 @@ const Skills = () => {
 
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    show: { 
-      y: 0, 
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10
-      }
-    }
-  };
-
   return (
     <div ref={sectionRef} className="space-y-12">
-      <motion.h2 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="section-heading text-center flex items-center justify-center gap-3"
-      >
+      <h2 className="section-heading text-center flex items-center justify-center gap-3">
         <Terminal className="h-8 w-8" />
         <span>Tech Stack</span>
-      </motion.h2>
+      </h2>
       
-      <motion.div 
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.1 }}
-        className="grid gap-8 md:gap-12"
-      >
+      <div className="grid gap-8 md:gap-12">
         {skillCategories.map((category, idx) => (
-          <motion.div 
+          <div 
             key={idx} 
-            variants={item}
             className="neon-card p-6 space-y-6 hover:scale-[1.02] transition-transform duration-300"
-            style={{
-              boxShadow: `0 10px 30px -15px rgba(155, 93, 229, 0.2)`,
-              borderRadius: "1rem",
-              backgroundColor: "rgba(15, 14, 23, 0.5)",
-              backdropFilter: "blur(10px)"
-            }}
-            whileHover={{
-              boxShadow: `0 20px 40px -15px rgba(155, 93, 229, 0.4)`,
-              y: -5
-            }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <motion.div 
-                className="p-3 rounded-lg bg-neon-purple/10"
-                whileHover={{
-                  backgroundColor: "rgba(155, 93, 229, 0.25)",
-                  rotate: [0, 5, -5, 0],
-                  transition: { duration: 0.5 }
-                }}
-              >
+              <div className="p-2 rounded-lg bg-neon-purple/10">
                 {category.icon}
-              </motion.div>
+              </div>
               <h3 className="text-xl font-space font-bold text-white">
                 {category.title}
               </h3>
@@ -141,24 +88,20 @@ const Skills = () => {
               {category.skills.map((skill, skillIdx) => (
                 <HoverCard key={skillIdx}>
                   <HoverCardTrigger asChild>
-                    <motion.div 
-                      className="space-y-2 cursor-pointer"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
+                    <div className="space-y-2 cursor-pointer">
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-2">
                           <span className="text-white font-medium">{skill.name}</span>
-                          <Badge variant="secondary" className="text-xs bg-neon-purple/20 text-neon-cyan">
+                          <Badge variant="secondary" className="text-xs">
                             {skill.progress}%
                           </Badge>
                         </div>
                       </div>
                       <Progress 
                         value={skill.progress} 
-                        className="h-2 transition-all duration-300 hover:h-3 bg-dark/50 [&>div]:bg-gradient-to-r [&>div]:from-neon-purple [&>div]:to-neon-cyan" 
+                        className="h-2 transition-all duration-300 hover:h-3" 
                       />
-                    </motion.div>
+                    </div>
                   </HoverCardTrigger>
                   <HoverCardContent className="w-80 bg-card/95 backdrop-blur-sm border-neon-purple/20">
                     <p className="text-sm text-gray-300">{skill.description}</p>
@@ -166,9 +109,9 @@ const Skills = () => {
                 </HoverCard>
               ))}
             </div>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

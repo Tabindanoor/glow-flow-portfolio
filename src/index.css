@@ -27,8 +27,6 @@
     --input: 240 6% 15%;
     --ring: 271 76% 66%;
     --radius: 0.5rem;
-    --neon-purple: #9B5DE5;
-    --neon-cyan: #00F5FF;
   }
 }
 
@@ -39,13 +37,6 @@
   
   body {
     @apply bg-dark text-foreground overflow-x-hidden font-sans antialiased;
-    cursor: none;
-  }
-
-  @media (max-width: 768px) {
-    body {
-      cursor: auto;
-    }
   }
 
   /* Custom scrollbar */
@@ -117,75 +108,6 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r 
     from-neon-cyan to-neon-purple;
   }
-
-  /* Custom cursor styles */
-  .cursor-dot {
-    height: 10px;
-    width: 10px;
-    background-color: var(--neon-purple);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    pointer-events: none;
-  }
-
-  .cursor-ring {
-    height: 30px;
-    width: 30px;
-    border: 2px solid var(--neon-purple);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    z-index: 998;
-    pointer-events: none;
-    transition: all 0.1s ease-out;
-  }
-
-  /* Animation classes for scroll reveal */
-  .animate-in {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .fade-down {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-
-  .fade-left {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-
-  .fade-right {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-
-  .stagger-item {
-    transition-delay: calc(var(--i) * 100ms);
-  }
-
-  /* Progress bar styles */
-  .progress {
-    @apply bg-dark/50 rounded-full overflow-hidden;
-  }
-
-  .progress-bar {
-    @apply h-full bg-gradient-to-r from-neon-purple to-neon-cyan rounded-full;
-    transition: width 1.5s ease-out;
-  }
 }
 
 /* Additional animations */
@@ -205,29 +127,4 @@
 
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
-}
-
-/* Parallax effect */
-.parallax {
-  will-change: transform;
-  transform-style: preserve-3d;
-}
-
-/* 3D card effect */
-.card-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.card-3d:hover {
-  transform: rotateY(5deg) rotateX(-5deg) translateZ(10px);
-}
-
-.card-3d-content {
-  transform-style: preserve-3d;
-}
-
-.card-3d-content > * {
-  transform: translateZ(20px);
-  transition: transform 0.6s;
 }
