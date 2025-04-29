@@ -20,7 +20,8 @@ interface Service {
 const Services = () => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, threshold: 0.2 });
+  // Fix: Remove threshold from useInView options as it's not supported in this version of framer-motion
+  const isInView = useInView(ref, { once: false });
   
   useEffect(() => {
     if (isInView) {
