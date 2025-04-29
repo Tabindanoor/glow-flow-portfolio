@@ -10,6 +10,7 @@ import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { initScrollAnimations } from '@/lib/animations';
+import Services from '@/components/sections/Services';
 
 const Index = () => {
   useEffect(() => {
@@ -34,6 +35,7 @@ const Index = () => {
         <About />
         <Projects />
         <Skills />
+        <Services/>
         {/* <Testimonials /> */}
         <Contact />
       </main>
