@@ -5,6 +5,8 @@ import { Text3D } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { ArrowDown } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ParallaxEffect from './ParallaxEffect';
 
 const AnimatedText = () => {
   const mesh = useRef<THREE.Mesh>(null!);
@@ -87,54 +89,82 @@ const Hero = () => {
       ref={heroRef}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
         <div className="flex flex-col items-center text-center mb-8">
+          <ParallaxEffect intensity={0.3} direction="up">
+            <p className="text-4xl font-space font-bold text-white">
+              I am <span className="text-gradient"> Tabinda noor</span>
+            </p>
+          </ParallaxEffect>
 
-        <p 
-            className="text-4xl font-space font-bold text-white"
-          >
-            I am <span className="text-gradient"> Tabinda noor</span>
-          </p>
-
-
-          <h1 
+          <motion.h1 
             ref={headingRef}
             className="text-4xl sm:text-6xl md:text-5xl font-bold font-space my-6 animate-glow"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             MERN Stack <span className="text-gradient">Developer</span>
-          </h1>
+          </motion.h1>
           
-          <p 
+          <motion.p 
             ref={subtitleRef}
             className="text-xl sm:text-2xl text-gray-300 max-w-2xl mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
             Building immersive digital experiences with cutting-edge web technologies
-          </p>
+          </motion.p>
           
-          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
-            <a 
-              href="#projects" 
-              className="btn-primary flex items-center justify-center gap-2 group"
-            >
-              View Projects
-              <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-            </a>
-            <a 
-              href="#contact" 
-              className="btn-secondary"
-            >
-              Contact Me
-            </a>
-          </div>
+          <ParallaxEffect intensity={0.1} direction="down">
+            <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
+              <motion.a 
+                href="#projects" 
+                className="btn-primary flex items-center justify-center gap-2 group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Projects
+                <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              </motion.a>
+              <motion.a 
+                href="#contact" 
+                className="btn-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Me
+              </motion.a>
+            </div>
+          </ParallaxEffect>
         </div>
-
-      
       </div>
       
-      {/* Decorative gradient shapes */}
-      <div className="absolute top-1/4 -left-32 w-64 h-64 rounded-full bg-neon-purple/20 blur-[100px]" />
-      <div className="absolute bottom-1/4 -right-32 w-64 h-64 rounded-full bg-neon-cyan/20 blur-[100px]" />
-
+      {/* Decorative gradient shapes with parallax effect */}
+      <motion.div 
+        className="absolute top-1/4 -left-32 w-64 h-64 rounded-full bg-neon-purple/20 blur-[100px]"
+        animate={{ 
+          x: [0, 20, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{ 
+          repeat: Infinity,
+          duration: 10,
+          ease: "easeInOut" 
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-1/4 -right-32 w-64 h-64 rounded-full bg-neon-cyan/20 blur-[100px]"
+        animate={{ 
+          x: [0, -20, 0],
+          y: [0, 20, 0],
+        }}
+        transition={{ 
+          repeat: Infinity,
+          duration: 12,
+          ease: "easeInOut" 
+        }}
+      />
     </section>
   );
 };

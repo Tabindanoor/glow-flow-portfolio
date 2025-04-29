@@ -36,7 +36,7 @@
   }
   
   body {
-    @apply bg-dark text-foreground overflow-x-hidden font-sans antialiased;
+    @apply bg-dark text-foreground overflow-x-hidden font-sans antialiased cursor-none md:cursor-none;
   }
 
   /* Custom scrollbar */
@@ -51,6 +51,13 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-neon-purple/80;
+  }
+  
+  /* Hide default cursor on desktop */
+  @media (min-width: 768px) {
+    * {
+      cursor: none !important;
+    }
   }
 }
 
@@ -108,6 +115,35 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r 
     from-neon-cyan to-neon-purple;
   }
+  
+  /* Custom cursor styles */
+  .custom-cursor-outer {
+    @apply fixed pointer-events-none z-50 w-8 h-8 rounded-full border-2 border-neon-purple/70 mix-blend-difference;
+  }
+  
+  .custom-cursor-inner {
+    @apply fixed pointer-events-none z-50 rounded-full bg-neon-cyan/80 mix-blend-difference;
+  }
+  
+  /* Parallax container */
+  .parallax-container {
+    @apply overflow-hidden relative;
+  }
+  
+  .parallax-inner {
+    @apply will-change-transform;
+  }
+}
+
+/* Progress bar styles - neon cyan color */
+[role="progressbar"] {
+  @apply bg-neon-cyan/30 relative overflow-hidden;
+  
+  &::before {
+    content: '';
+    @apply absolute top-0 left-0 h-full w-full bg-neon-cyan shadow-[0_0_10px_rgba(0,245,255,0.7)];
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
 }
 
 /* Additional animations */
@@ -121,10 +157,29 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 15px rgba(155,93,229,0.5); }
-  50% { box-shadow: 0 0 30px rgba(155,93,229,0.8); }
+  0%, 100% { box-shadow: 0 0 15px rgba(0,245,255,0.5); }
+  50% { box-shadow: 0 0 30px rgba(0,245,255,0.8); }
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Framer Motion Page Transitions */
+.page-transition-enter {
+  opacity: 0;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 400ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 400ms;
 }
