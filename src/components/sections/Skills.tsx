@@ -8,7 +8,6 @@ import {
   HoverCardContent
 } from '@/components/ui/hover-card';
 import { Badge } from '@/components/ui/badge';
-import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
 
 const Skills = () => {
   const skillCategories = [
@@ -72,54 +71,45 @@ const Skills = () => {
       
       <div className="grid gap-8 md:gap-12">
         {skillCategories.map((category, idx) => (
-          <ScrollAnimationWrapper 
-            key={idx}
-            animation="slideUp" 
-            delay={idx * 0.1}
+          <div 
+            key={idx} 
+            className="neon-card p-6 space-y-6 hover:scale-[1.02] transition-transform duration-300"
           >
-            <div 
-              className="neon-card p-6 space-y-6 hover:scale-[1.02] transition-transform duration-300"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-neon-purple/10">
-                  {category.icon}
-                </div>
-                <h3 className="text-xl font-space font-bold text-white">
-                  {category.title}
-                </h3>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-lg bg-neon-purple/10">
+                {category.icon}
               </div>
-
-              <div className="grid gap-6">
-                {category.skills.map((skill, skillIdx) => (
-                  <HoverCard key={skillIdx}>
-                    <HoverCardTrigger asChild>
-                      <div className="space-y-2 cursor-pointer">
-                        <div className="flex justify-between items-center">
-                          <div className="flex items-center gap-2">
-                            <span className="text-white font-medium">{skill.name}</span>
-                            <Badge variant="secondary" className="text-xs">
-                              {skill.progress}%
-                            </Badge>
-                          </div>
-                        </div>
-                        <Progress 
-                          value={skill.progress} 
-                          className="h-2 transition-all duration-300 hover:h-3 bg-gray-800"
-                          style={{ 
-                            background: 'rgba(0, 0, 0, 0.2)',
-                            '--progress-background': '#00F5FF'
-                          } as React.CSSProperties}
-                        />
-                      </div>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="w-80 bg-card/95 backdrop-blur-sm border-neon-purple/20">
-                      <p className="text-sm text-gray-300">{skill.description}</p>
-                    </HoverCardContent>
-                  </HoverCard>
-                ))}
-              </div>
+              <h3 className="text-xl font-space font-bold text-white">
+                {category.title}
+              </h3>
             </div>
-          </ScrollAnimationWrapper>
+
+            <div className="grid gap-6">
+              {category.skills.map((skill, skillIdx) => (
+                <HoverCard key={skillIdx}>
+                  <HoverCardTrigger asChild>
+                    <div className="space-y-2 cursor-pointer">
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center gap-2">
+                          <span className="text-white font-medium">{skill.name}</span>
+                          <Badge variant="secondary" className="text-xs">
+                            {skill.progress}%
+                          </Badge>
+                        </div>
+                      </div>
+                      <Progress 
+                        value={skill.progress} 
+                        className="h-2 transition-all duration-300 hover:h-3" 
+                      />
+                    </div>
+                  </HoverCardTrigger>
+                  <HoverCardContent className="w-80 bg-card/95 backdrop-blur-sm border-neon-purple/20">
+                    <p className="text-sm text-gray-300">{skill.description}</p>
+                  </HoverCardContent>
+                </HoverCard>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </div>
