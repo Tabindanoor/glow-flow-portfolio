@@ -25,6 +25,7 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --radius: 0.5rem;
+    --progress-background: #00F5FF;
   }
 }
 
@@ -106,6 +107,21 @@
   .hide-cursor {
     cursor: none;
   }
+  
+  /* Custom Progress Bar */
+  .progress-bar {
+    @apply h-2 bg-gray-800 rounded-full overflow-hidden;
+  }
+  
+  .progress-bar-fill {
+    @apply h-full bg-neon-cyan transition-all duration-500 ease-out;
+  }
+}
+
+/* Override the default progress component styles */
+.radix-progress-indicator {
+  background: var(--progress-background) !important;
+  box-shadow: 0 0 10px var(--progress-background), 0 0 5px var(--progress-background) !important;
 }
 
 /* Hide the default cursor when our custom one is active */
@@ -136,3 +152,4 @@
 *::-webkit-scrollbar-thumb:hover {
   background-color: rgba(155, 93, 229, 0.8);
 }
+
