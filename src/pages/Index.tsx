@@ -5,13 +5,11 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
-import Skills from '@/components/Skills'; // Using the original Skills component
-import Services from '@/components/Services';
+import Skills from '@/components/Skills';
+import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import CustomCursor from '@/components/CustomCursor';
 import { initScrollAnimations } from '@/lib/animations';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const Index = () => {
   useEffect(() => {
@@ -24,9 +22,6 @@ const Index = () => {
   
   return (
     <div className="min-h-screen relative bg-dark">
-      {/* Custom Cursor */}
-      <CustomCursor />
-      
       {/* 3D Particle Background */}
       <ParticleBackground />
       
@@ -34,20 +29,14 @@ const Index = () => {
       <Navbar />
       
       {/* Main Content */}
-      <AnimatePresence>
-        <motion.main
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Services />
-          <Contact />
-        </motion.main>
-      </AnimatePresence>
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        {/* <Testimonials /> */}
+        <Contact />
+      </main>
       
       {/* Footer */}
       <Footer />
