@@ -9,6 +9,8 @@ import Skills from '@/components/Skills';
 import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import CustomCursor from '@/components/CustomCursor';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { initScrollAnimations } from '@/lib/animations';
 
 const Index = () => {
@@ -21,26 +23,31 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="min-h-screen relative bg-dark">
-      {/* 3D Particle Background */}
-      <ParticleBackground />
-      
-      {/* Navigation */}
-      <Navbar />
-      
-      {/* Main Content */}
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        {/* <Testimonials /> */}
-        <Contact />
-      </main>
-      
-      {/* Footer */}
-      <Footer />
-    </div>
+    <LazyMotion features={domAnimation}>
+      <div className="min-h-screen relative bg-dark overflow-hidden">
+        {/* Custom Cursor */}
+        <CustomCursor />
+        
+        {/* 3D Particle Background */}
+        <ParticleBackground />
+        
+        {/* Navigation */}
+        <Navbar />
+        
+        {/* Main Content */}
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Testimonials />
+          <Contact />
+        </main>
+        
+        {/* Footer */}
+        <Footer />
+      </div>
+    </LazyMotion>
   );
 };
 
