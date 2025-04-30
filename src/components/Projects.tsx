@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 // import { useState, useEffect, useRef } from 'react';
 // import { Canvas } from '@react-three/fiber';
 // import { PerspectiveCamera, useTexture } from '@react-three/drei';
@@ -204,6 +205,8 @@
 
 
 
+=======
+>>>>>>> f52bd4642a8adcc43f786383563c8d8aebfb3465
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
