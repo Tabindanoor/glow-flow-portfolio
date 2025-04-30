@@ -29,6 +29,7 @@ const Navbar = () => {
     'education',
     'experience',
     'skills',
+    'services',
     'achievements',
     'projects',
     'contact'
