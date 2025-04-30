@@ -55,7 +55,7 @@ const Projects = () => {
       id: 1,
       title: "3D Portfolio Website",
       description: "Interactive portfolio with Three.js animations and immersive 3D elements",
-      image: "/placeholder.svg",
+      image: "",
       tags: ["Three.js", "React", "GSAP"],
       link: "#"
     },
@@ -63,7 +63,7 @@ const Projects = () => {
       id: 2,
       title: "E-commerce Platform",
       description: "Fully responsive e-commerce site with 3D product visualization",
-      image: "/placeholder.svg",
+      image: "",
       tags: ["Next.js", "Three.js", "Stripe"],
       link: "#"
     },
@@ -71,7 +71,7 @@ const Projects = () => {
       id: 3,
       title: "3D Data Visualization",
       description: "Interactive dashboard with 3D charts and real-time data visualization",
-      image: "/placeholder.svg",
+      image: "",
       tags: ["D3.js", "Three.js", "WebGL"],
       link: "#"
     },
@@ -79,7 +79,7 @@ const Projects = () => {
       id: 4,
       title: "WebGL Game",
       description: "Browser-based 3D game with physics and interactive elements",
-      image: "/placeholder.svg",
+      image: "",
       tags: ["WebGL", "Cannon.js", "React"],
       link: "#"
     }
