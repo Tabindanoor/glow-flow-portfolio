@@ -10,6 +10,9 @@ import { ExternalLink, Github } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import alexPage from "/Screenshot 2024-07-25 231437.png"
+import alex from "/alex.png"
+import learning from "/alex.png"
 
 interface Project {
   id: number;
@@ -70,7 +73,7 @@ const Projects = () => {
       id: 1,
       title: "3D Portfolio Website",
       description: "Interactive portfolio with Three.js animations and immersive 3D elements for a stunning visual experience.",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      image: alex,
       tags: ["Three.js", "React", "GSAP"],
       liveUrl: "#",
       sourceUrl: "#"
