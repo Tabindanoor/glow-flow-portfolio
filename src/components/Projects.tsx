@@ -17,6 +17,8 @@ import patanhi from "/alex.png"
 import hera from "/alex.png"
 import hera from "/alex.png"
 import hera from "/alex.png"
+import hera from "/alex.png"
+import hera from "/alex.png"
 import her from "/alex.png"
 import her from "/alex.png"
 
