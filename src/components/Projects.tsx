@@ -15,12 +15,7 @@ import alex from "/alex.png"
 import learning from "/alex.png"
 import patanhi from "/alex.png"
 import hera from "/alex.png"
-import hera from "/alex.png"
-import hera from "/alex.png"
-import hera from "/alex.png"
-import hera from "/alex.png"
-import her from "/alex.png"
-import her from "/alex.png"
+
 
 interface Project {
   id: number;
