@@ -10,11 +10,7 @@ import { ExternalLink, Github } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
-import alexPage from "/Screenshot 2024-07-25 231437.png"
 import alex from "/alex.png"
-import learning from "/alex.png"
-import patanhi from "/alex.png"
-import hera from "/alex.png"
 
 
 interface Project {
