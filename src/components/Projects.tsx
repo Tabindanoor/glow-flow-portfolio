@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import alex from "/alex.png"
+import lex from "/alex.png"
 
 interface Project {
   id: number;
