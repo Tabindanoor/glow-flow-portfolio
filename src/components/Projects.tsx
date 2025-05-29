@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import alex from "/alex.png"
+import todoKandan from "/todoKanban.png"
 
 interface Project {
   id: number;
@@ -80,7 +81,7 @@ const Projects = () => {
       id: 2,
       title: "E-commerce Platform",
       description: "Fully responsive e-commerce site with 3D product visualization and seamless checkout experience.",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+      image: todoKandan,
       tags: ["Next.js", "Three.js", "Stripe"],
       liveUrl: "#",
       sourceUrl: "#"
