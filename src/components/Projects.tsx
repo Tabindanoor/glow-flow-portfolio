@@ -13,6 +13,7 @@ import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import alex from "/alex.png"
 import todoKandan from "/todoKanban.png"
 import elearning from "/elearning.png"
+import music from "/music.png"
 
 interface Project {
   id: number;
