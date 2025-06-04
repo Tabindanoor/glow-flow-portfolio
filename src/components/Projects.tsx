@@ -14,7 +14,7 @@ import alex from "/alex.png"
 import todoKandan from "/todoKanban.png"
 import elearning from "/elearning.png"
 import music from "/music.png"
-import realtime from "/realtime.png"
+import realtimeTicTacToe from "/realtimeTicTacToe.png"
 import realtimeEditor from "/realtimeEditor.png"
 
 interface Project {
