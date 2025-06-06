@@ -17,6 +17,7 @@ import music from "/music.png"
 import realtimeTicTacToe from "/realtimeTicTacToe.png"
 import realtimeEditor from "/realtimeEditor.png"
 import foodOrdering from "/foodOrdering.png"
+import memoryCardGame from "/memoryCardGame.png"
 
 interface Project {
   id: number;
