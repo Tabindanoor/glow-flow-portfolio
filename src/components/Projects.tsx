@@ -18,6 +18,7 @@ import realtimeTicTacToe from "/realtimeTicTacToe.png"
 import realtimeEditor from "/realtimeEditor.png"
 import foodOrdering from "/foodOrdering.png"
 import memoryCardGame from "/memoryCardGame.png"
+import wordCounter from "/wordCounter.png"
 
 interface Project {
   id: number;
