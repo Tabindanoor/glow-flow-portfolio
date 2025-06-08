@@ -19,6 +19,7 @@ import realtimeEditor from "/realtimeEditor.png"
 import foodOrdering from "/foodOrdering.png"
 import memoryCardGame from "/memoryCardGame.png"
 import wordCounter from "/wordCounter.png"
+import foodOrdering from "/foodOrdering.png"
 
 interface Project {
   id: number;
