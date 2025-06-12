@@ -20,7 +20,6 @@ import memoryCardGame from "/memoryCardGame.png"
 import wordCounter from "/wordCounter.png"
 import foodOrdering from "/foodOrdering.png"
 import portfolio from "/portfolio.png"
-import portfolio from "/portfolio.png"
 
 interface Project {
   id: number;
