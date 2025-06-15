@@ -19,7 +19,6 @@ import realtimeEditor from "/realtimeEditor.png"
 import memoryCardGame from "/memoryCardGame.png"
 import wordCounter from "/wordCounter.png"
 import foodOrdering from "/foodOrdering.png"
-import portfolio from "/portfolio.png"
 
 
 interface Project {
