@@ -1,24 +1,15 @@
-// Projects.tsx
-
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, useTexture, Environment } from '@react-three/drei';
 import * as THREE from 'three';
-// import { stagger } from '@/lib/animations';
 import { ExternalLink, Github } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import alex from "/alex.png"
 import todoKandan from "/todoKanban.png"
-import elearning from "/elearning.png"
-import music from "/music.png"
-import realtimeTicTacToe from "/realtimeTicTacToe.png"
-import realtimeEditor from "/realtimeEditor.png"
-import memoryCardGame from "/memoryCardGame.png"
-import wordCounter from "/wordCounter.png"
-import foodOrdering from "/foodOrdering.png"
+
 
 
 interface Project {
