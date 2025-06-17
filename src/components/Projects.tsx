@@ -11,7 +11,6 @@ import alex from "/alex.png"
 import todoKandan from "/todoKanban.png"
 
 
-
 interface Project {
   id: number;
   title: string;
