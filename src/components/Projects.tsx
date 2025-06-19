@@ -10,6 +10,7 @@ import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import alex from "/alex.png"
 import todoKandan from "/todoKanban.png"
 import papersicor from "/paperrocksicor.png"
+import musicplayer from"/musicplayer.png"
 
 
 interface Project {
