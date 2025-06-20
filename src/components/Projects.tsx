@@ -11,6 +11,7 @@ import alex from "/alex.png"
 import todoKandan from "/todoKanban.png"
 import papersicor from "/paperrocksicor.png"
 import musicplayer from"/musicplayer.png"
+import mernProject from '/mern.png'
 
 
 interface Project {
