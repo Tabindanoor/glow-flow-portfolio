@@ -13,7 +13,7 @@ import papersicor from "/paperrocksicor.png"
 import musicplayer from"/musicplayer.png"
 import mernProject from '/mern.png'
 import imageupload from "/uploadImage"
-
+import tictactoe from "/tictactoe"
 
 interface Project {
   id: number;
