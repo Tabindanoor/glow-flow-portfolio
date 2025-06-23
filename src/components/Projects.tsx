@@ -12,8 +12,8 @@ import todoKandan from "/todoKanban.png"
 import papersicor from "/paperrocksicor.png"
 import musicplayer from"/musicplayer.png"
 import mernProject from '/mern.png'
-import imageupload from "/uploadImage"
-import tictactoe from "/tictactoe"
+import imageupload from "/uploadImage.png"
+import tictactoe from "/tictactoe.png"
 
 interface Project {
   id: number;
