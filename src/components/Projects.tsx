@@ -14,6 +14,7 @@ import musicplayer from"/musicplayer.png"
 import mernProject from '/mern.png'
 import imageupload from "/uploadImage.png"
 import tictactoe from "/tictactoe.png"
+import foodordering from "/foodordering.png"
 
 interface Project {
   id: number;
