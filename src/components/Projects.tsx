@@ -13,7 +13,7 @@ import papersicor from "/paperrocksicor.png"
 import musicplayer from"/musicplayer.png"
 import mernProject from '/mern.png'
 import imageupload from "/uploadImage.png"
-import tictactoe from "/tictactoe.png"
+import tictactoe from "/project.png"
 import foodordering from "/foodordering.png"
 
 interface Project {
@@ -93,7 +93,7 @@ const Projects = () => {
       id: 3,
       title: "3D Data Visualization",
       description: "Interactive dashboard with 3D charts and real-time data visualization for complex analytics.",
-      image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334",
+      image: tictactoe,
       tags: ["D3.js", "Three.js", "WebGL"],
       liveUrl: "#",
       sourceUrl: "#"
