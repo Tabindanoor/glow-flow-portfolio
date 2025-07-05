@@ -15,6 +15,7 @@ import mernProject from '/mern.png'
 import imageupload from "/uploadImage.png"
 import firebasetodo from "/todo edit.png"
 import tictactoe from "/project.png"
+import tictactoe from "/project.png"
 import foodordering from "/foodordering.png"
 
 interface Project {
