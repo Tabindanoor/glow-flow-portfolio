@@ -12,6 +12,7 @@ import todoKandan from "/todoKanban.png"
 import papersicor from "/paperrocksicor.png"
 import musicplayer from"/musicplayer.png"
 import mernProject from '/mern.png'
+import mernProject from '/mern.png'
 import cardgame from "/cardgame.png"
 import pic from "/pic.png"
 import imageupload from "/uploadImage.png"
