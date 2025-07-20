@@ -15,6 +15,7 @@ import mernProject from '/mern.png'
 import cardgame from "/cardgame.png"
 import pic from "/pic.png"
 import aiTodo from "/aiTodo.png"
+import elearn from "/elearn.png"
 import imageupload from "/uploadImage.png"
 import firebasetodo from "/todo edit.png"
 import tictactoe from "/simpletictactoe.png"
