@@ -9,17 +9,11 @@ import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import alex from "/alex.png"
 import todoKandan from "/todoKanban.png"
-import papersicor from "/paperrocksicor.png"
-import musicplayer from"/musicplayer.png"
-import mernProject from '/mern.png'
-import cardgame from "/cardgame.png"
-import pic from "/pic.png"
-import aiTodo from "/aiTodo.png"
-import elearn from "/elearn.png"
-import imageupload from "/uploadImage.png"
-import firebasetodo from "/todo edit.png"
-import tictactoe from "/simpletictactoe.png"
-import foodordering from "/foodordering.png"
+import elearning from "/elearning.png"
+import music from "/music.png"
+import realtimeTicTacToe from "/realtimeTicTacToe.png"
+import realtimeEditor from "/realtimeEditor.png"
+import foodOrdering from "/foodOrdering.png"
 
 interface Project {
   id: number;
@@ -76,29 +70,29 @@ const Projects = () => {
   const projectsRef = useRef<HTMLDivElement>(null);
 
   const projects: Project[] = [
-    // {
-    //   id: 1,
-    //   title: "3D Portfolio Website",
-    //   description: "Interactive portfolio with Three.js animations and immersive 3D elements for a stunning visual experience.",
-    //   image: alex,
-    //   tags: ["Three.js", "React", "GSAP"],
-    //   liveUrl: "#",
-    //   sourceUrl: "#"
-    // },
-    // {
-    //   id: 2,
-    //   title: "E-commerce Platform",
-    //   description: "Fully responsive e-commerce site with 3D product visualization and seamless checkout experience.",
-    //   image: todoKandan,
-    //   tags: ["Next.js", "Three.js", "Stripe"],
-    //   liveUrl: "#",
-    //   sourceUrl: "#"
-    // },
+    {
+      id: 1,
+      title: "3D Portfolio Website",
+      description: "Interactive portfolio with Three.js animations and immersive 3D elements for a stunning visual experience.",
+      image: alex,
+      tags: ["Three.js", "React", "GSAP"],
+      liveUrl: "#",
+      sourceUrl: "#"
+    },
+    {
+      id: 2,
+      title: "E-commerce Platform",
+      description: "Fully responsive e-commerce site with 3D product visualization and seamless checkout experience.",
+      image: todoKandan,
+      tags: ["Next.js", "Three.js", "Stripe"],
+      liveUrl: "#",
+      sourceUrl: "#"
+    },
     {
       id: 3,
       title: "3D Data Visualization",
       description: "Interactive dashboard with 3D charts and real-time data visualization for complex analytics.",
-      image: tictactoe,
+      image: todoKandan,
       tags: ["D3.js", "Three.js", "WebGL"],
       liveUrl: "#",
       sourceUrl: "#"
