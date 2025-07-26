@@ -9,32 +9,92 @@ const Experience = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  // const experiences = [
+  //   {
+  //     role: "MERN Bootcamper",
+  //     company: "Techloset Solutions",
+  //     period: "02-20-2023 - 24-08-2023",
+  //     description: "Maintainable code using React JS, Express and Node JS, along with the Tailwind CSS, MongoDB and firebase."
+  //   },
+  //   {
+  //     role: "Web Developer Instructor",
+  //     company: "ITEC Systems Faisalabad",
+  //     period: "25-08-2022 - 01-02-2023",
+  //     description: "With the experience as a web instructor, I have gained invaluable insights into the art of guiding and educating aspiring web developers."
+  //   },
+  //   {
+  //     role: "Programmer",
+  //     company: "Corvit Systems Faisalabad",
+  //     period: "25-07-2022 - 20-08-2022",
+  //     description: "Using python programming Language, Manage the instances of AWS using python scripts."
+  //   },
+  //   {
+  //     role: "Selenium with JAVA training",
+  //     company: "HCC TECHNOLOGY FOUNDATION",
+  //     period: "JULY 2023 - SEPT 2023",
+  //     description: "With the experience trainee, I have gained expertise in web scraping using JAVA and python. Learned Testing techniques on Web Applications."
+  //   }
+  // ];
+
+
   const experiences = [
-    {
-      role: "MERN Bootcamper",
-      company: "Techloset Solutions",
-      period: "02-20-2023 - 24-08-2023",
-      description: "Maintainable code using React JS, Express and Node JS, along with the Tailwind CSS, MongoDB and firebase."
-    },
-    {
-      role: "Web Developer Instructor",
-      company: "ITEC Systems Faisalabad",
-      period: "25-08-2022 - 01-02-2023",
-      description: "With the experience as a web instructor, I have gained invaluable insights into the art of guiding and educating aspiring web developers."
-    },
-    {
-      role: "Programmer",
-      company: "Corvit Systems Faisalabad",
-      period: "25-07-2022 - 20-08-2022",
-      description: "Using python programming Language, Manage the instances of AWS using python scripts."
-    },
-    {
-      role: "Selenium with JAVA training",
-      company: "HCC TECHNOLOGY FOUNDATION",
-      period: "JULY 2023 - SEPT 2023",
-      description: "With the experience trainee, I have gained expertise in web scraping using JAVA and python. Learned Testing techniques on Web Applications."
-    }
-  ];
+  {
+    role: "Freelancer",
+    company: "Remote",
+    period: "Sep 2024 - Present",
+    description:
+      "Working on multiple freelance projects to provide web development solutions and services to organizations using MERN stack technologies.",
+  },
+  {
+    role: "Full Stack Developer",
+    company: "Zephrex, Remote",
+    period: "Aug 2024 - Sep 2024",
+    description:
+      "Contributed to the development of company products and software solutions, focusing on full-stack development and delivering innovative features.",
+  },
+  {
+    role: "Front-end Developer Intern",
+    company: "CodSoft",
+    period: "Sep 2023 - Oct 2023",
+    description:
+      "Developed frontend projects like Personal Portfolio, Blog Website, and Calculator using HTML, CSS, JavaScript, and React.",
+  },
+  {
+    role: "MERN Stack Intern",
+    company: "TopperWorld, Remote",
+    period: "Aug 2023 - Sep 2023",
+    description:
+      "Built a Flipkart clone using React, enhancing skills in building e-commerce front-end interfaces.",
+  },
+  {
+    role: "MERN Stack Intern",
+    company: "SYNC, Remote",
+    period: "Dec 2023 - Dec 2023",
+    description:
+      "Created multiple React projects including a Landing Page, Quiz App, Music Player, and E-Learning App, focusing on interactive UI design.",
+  },
+  {
+    role: "MERN Stack Intern",
+    company: "CodeClause, Remote",
+    period: "Dec 2023 - Jan 2024",
+    description:
+      "Built React-based applications including Todo List Timer, Stopwatch, and Survey System, strengthening component-based development skills.",
+  },
+  {
+    role: "MERN Bootcamper Intern",
+    company: "Techloset Solutions, Faisalabad",
+    period: "Feb 2023 - Aug 2023",
+    description:
+      "Designed and implemented user interfaces using React, Tailwind CSS, and HTML. Focused on code efficiency, performance optimization, debugging, and ensuring responsive design.",
+  },
+  {
+    role: "Python Programmer",
+    company: "Corvit Systems, Faisalabad",
+    period: "Sep 2022 - Nov 2022",
+    description:
+      "Worked with Python for automating tasks and managing AWS instances through scripting. Collaborated with the team on cloud-based solutions.",
+  }
+];
 
   useEffect(() => {
     const observer = new IntersectionObserver(

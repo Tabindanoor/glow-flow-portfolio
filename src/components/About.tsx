@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { fadeInUp, fadeInRight, staggerFadeIn } from '@/lib/animations';
 import { Card } from '@/components/ui/card';
@@ -9,6 +8,7 @@ import Skills from './sections/Skills';
 import Achievements from './sections/Achievements';
 import picture from "/picture.jpg"
 import resume from "/resume.pdf"
+import finalResume from "/final cv.pdf"
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,15 +36,6 @@ const About = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  // components/ComputerModel.jsx
-
-
-
-
-
-
-
 
   return (
     <section 
@@ -83,7 +74,7 @@ const About = () => {
                   Hello, I'm <span className="text-neon-cyan">Tabinda Noor</span>
                 </h3>
                 <p className="text-xl text-gray-300 leading-relaxed">
-                  A passionate and dedicated MERN stack developer with a Bachelor's degree in Software Engineering.
+                  A passionate and dedicated MERN stack developer with Bachelor's degree in Software Engineering.
                 </p>
               </div>
               
@@ -120,7 +111,7 @@ const About = () => {
 
               <div className="flex flex-wrap gap-4 pt-4">
                 
-                <a  href={resume}  download="Resume"  className="inline-flex items-center justify-center gap-2 bg-neon-purple hover:bg-neon-purple/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                <a  href={finalResume}  download="Resume"  className="inline-flex items-center justify-center gap-2 bg-neon-purple hover:bg-neon-purple/90 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
               <Download className="h-4 w-4" />  Download CV</a>
 
 
@@ -153,16 +144,9 @@ const About = () => {
           </div>
         </div>
 
-        {/* Education Section */}
         <Education />
-
-        {/* Experience Section */}
         <Experience />
-
-        {/* Skills Section */}
         <Skills />
-
-        {/* Achievements Section */}
         <Achievements />
       </div>
     </section>
