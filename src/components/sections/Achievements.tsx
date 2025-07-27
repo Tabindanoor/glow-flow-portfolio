@@ -35,101 +35,136 @@ const Achievements = () => {
   }, []);
 
   const certifications = [
-    {
-      title: "JavaScript Certification From Coursera",
-      url: "https://drive.google.com/your-js-cert-link",
-      description: "Advanced JavaScript concepts and modern ES6+ features"
-    },
+    // {
+    //   title: "JavaScript Certification From Coursera",
+    //   url: "https://drive.google.com/your-js-cert-link",
+    //   description: "Advanced JavaScript concepts and modern ES6+ features"
+    // },
     {
       title: "MERN Bootcamp Certification",
       org: "Techloset Solutions",
-      url: "https://drive.google.com/your-mern-cert-link",
+      url: "https://drive.google.com/file/d/1hfGAlbLYduE5-XdPgEJwLllOpGGl1S8g/view?usp=sharing",
       description: "Full stack development with MongoDB, Express, React, and Node.js"
     },
     {
       title: "CS50x Puzzle Solver",
-      url: "https://drive.google.com/your-cs50-cert-link",
+      org: "Harvard University",
+      url: "https://drive.google.com/file/d/1_1ZrNsBfqOZOkAFw7FQNWh9lusZelI8t/view?usp=sharing",
       description: "Problem-solving and algorithmic thinking certification"
     },
     {
       title: "WordSprint 3.0 winner",
-      url: "https://drive.google.com/your-wordsprint-link",
-      description: "First place in competitive programming challenge"
+      org: "WordSprint Developers Hackathon",
+      url: "https://drive.google.com/file/d/1pLswgXevvENarT8escPYdKuNeHIGoC66/view?usp=sharing",
+      description: "Third place in competitive programming challenge"
     },
     {
       title: "Microsoft C# .NET Training",
-      url: "https://drive.google.com/your-microsoft-cert-link",
+      org: "HCC TECHNOLOGY FOUNDATION",
+      url: "https://drive.google.com/file/d/1_eilu62AGURVDX1OeA_Owv9KWBd8lXtr/view?usp=sharing",
       description: "Enterprise application development with .NET"
     },
     {
       title: "Soft Skills Business Bootcamp",
-      url: "https://drive.google.com/your-softskills-cert-link",
+      org: "HCC TECHNOLOGY FOUNDATION",
+      url: "https://drive.google.com/file/d/1aJSG5CnjGUeMoudlOx-jFx9OWTt1ES4H/view?usp=sharing",
       description: "Communication, leadership, and business acumen"
     },
     {
       title: "Lablab.ai 24 Claude Hackathon",
-      url: "https://drive.google.com/your-lablab-cert-link",
+      org:"Lablab.ai",
+      url: "https://drive.google.com/file/d/1iNwYFe6Qt2rA72VGDoiu98MIA-vcG972/view?usp=sharing",
+      description: "AI development and implementation"
+    },
+     {
+      title: "Lablab.ai gemini Hackathon",
+      org:"Lablab.ai",
+      url: "https://drive.google.com/file/d/1_RghgibMLk12pX9T-U4-G8aT0XeGPSWL/view?usp=drive_link",
       description: "AI development and implementation"
     },
     {
       title: "Testing with Selenium",
       org: "HCC Training Bootcamp",
-      url: "https://drive.google.com/your-selenium-cert-link",
+      url: "https://drive.google.com/file/d/14QQR25CUyPBf97B3Ai8xshdBRu8UInhX/view?usp=sharing",
       description: "Automated testing and quality assurance"
     },
+    //  {
+    //   title: "Testing with Selenium",
+    //   org: "HCC Training Bootcamp",
+    //   url: "https://drive.google.com/file/d/14QQR25CUyPBf97B3Ai8xshdBRu8UInhX/view?usp=sharing",
+    //   description: "Automated testing and quality assurance"
+    // },
     {
       title: "Graphics Designing",
       org: "DigiSkills",
-      url: "https://drive.google.com/your-graphics-cert-link",
+      url: "https://drive.google.com/file/d/1PP8-TbVEpf9KnAkD957czBibf24oqLvY/view?usp=sharing",
       description: "Digital design and creative visualization"
+    },
+    {
+      title: "Wordpress",
+      org: "DigiSkills",
+      url: "https://drive.google.com/file/d/18bt74QaypTLInD0cBk9IkfmDzWGcPvOG/view?usp=sharing",
+      description: "Wordpress development and content management"
     },
     {
       title: "Python Programming",
       org: "Stanford University Code In Place",
-      url: "https://drive.google.com/your-python-cert-link",
+      url: "https://drive.google.com/file/d/1Xy27b6iyj4WHYOU9Y0Kl2071yMMsD9tP/view?usp=sharing",
       description: "Advanced Python programming concepts"
     },
     {
-      title: "Computer Networking Certification",
-      url: "https://drive.google.com/your-networking-cert-link",
-      description: "Network infrastructure and security"
-    },
-    {
       title: "Cyber Security Certification",
-      url: "https://drive.google.com/your-security-cert-link",
+      org:"NAVTTC – National Vocational & Technical Training Commission",
+      url: "https://drive.google.com/file/d/1_1ZrNsBfqOZOkAFw7FQNWh9lusZelI8t/view?usp=sharing",
       description: "Information security and ethical hacking"
     },
-    {
-      title: "NSE-1 and NSE-2 Certification",
-      url: "https://drive.google.com/your-nse-cert-link",
-      description: "Network security expertise levels 1 and 2"
-    },
-    {
-      title: "HCIA Security Certification",
-      url: "https://drive.google.com/your-hcia-security-link",
-      description: "Huawei security infrastructure certification"
-    },
-    {
-      title: "HCIA Cloud Computing",
-      url: "https://drive.google.com/your-hcia-cloud-link",
-      description: "Cloud architecture and deployment"
-    }
+   
   ];
 
   return (
     <section
       id="achievements"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-b from-dark to-dark/95"
-    >
+      className="py-20 bg-gradient-to-b from-dark to-dark/95">
       <div className="container mx-auto px-4 sm:px-6 lg:px-24 space-y-20">
         <div>
           <h2 ref={headingRef} className="section-heading text-center flex items-center justify-center gap-3">
             <Award className="h-8 w-8" />
             <span>Achievements & Certifications</span>
           </h2>
+<div ref={textRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-16 items-stretch">
+  {certifications.map((cert, index) => (
+    <HoverCard key={index}>
+      <HoverCardTrigger asChild>
+        <a 
+          href={cert.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block h-full"
+        >
+          <Card className="flex flex-col justify-between h-full p-6 neon-card hover:scale-105 transition-all duration-300 cursor-pointer group">
+            <div>
+              <div className="flex justify-between items-start">
+                <h3 className="text-lg font-semibold text-white group-hover:text-neon-purple transition-colors">
+                  {cert.title}
+                </h3>
+                <ExternalLink className="h-5 w-5 text-gray-400 group-hover:text-neon-cyan transition-colors" />
+              </div>
+              {cert.org && (
+                <p className="text-sm text-gray-400 mt-2">{cert.org}</p>
+              )}
+            </div>
+          </Card>
+        </a>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-80 bg-dark/95 border border-neon-purple/20 p-4">
+        <p className="text-sm text-gray-300">{cert.description}</p>
+      </HoverCardContent>
+    </HoverCard>
+  ))}
+</div>
 
-          <div ref={textRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-16">
+          {/* <div ref={textRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-16">
             {certifications.map((cert, index) => (
               <HoverCard key={index}>
                 <HoverCardTrigger asChild>
@@ -157,8 +192,10 @@ const Achievements = () => {
                 </HoverCardContent>
               </HoverCard>
             ))}
-          </div>
+          </div> */}
         </div>
+     
+
       </div>
     </section>
   );
