@@ -72,7 +72,7 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "3D Portfolio Website",
+      title: "simple todo brother",
       description: "Interactive portfolio with Three.js animations and immersive 3D elements for a stunning visual experience.",
       image: alex,
       tags: ["Three.js", "React", "GSAP"],
