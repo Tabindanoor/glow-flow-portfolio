@@ -21,7 +21,7 @@ const SkillSphere = ({ skills, hoveredSkill, onHover }: SkillSphereProps) => {
   
   useFrame(({ clock }) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y = clock.getElapsedTime() * 0.1;
+      groupRef.current.rotation.y = clock.getElapsedTime() * 0.5;
     }
   });
 
