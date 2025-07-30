@@ -8,6 +8,26 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import alex from "/alex.png";
+import todoUsingAiPicture from "/ai todo.png";
+import todoUsingAiVideo from "/ai todo.mp4";
+import todoUsingFirebasePic from "/firebase todo.png";
+import todoUsingFirebaseVideo from "/firebase todo.mp4";
+import uploadImageMernPic from "/image upload.png"
+import uploadImageMernVideo from "/image upload.mp4"
+import pantryTrackerPic from "/pantry todo.png"
+import pantryTrackerVideo from "/pantry todo.mp4"
+import paperrocksicorPic from "/paperrocksicor.png"
+import paperrocksicorVideo from "/paperrocksicor.mp4"
+import simpleTicTacToePic from "/simple tic tac toe.png"
+import simpleTicTacToeVideo from "/simple tic tac toe.mp4"
+import realtimeTicTacToePic from "/realtime tic tac toe.png"
+import realtimeTicTacToeVideo from "/realtime tic tac toe.mp4"
+import TodoKanbanPic from "/todo Kanban.png"
+import TodoKanbanVideo from "/todo kanban.mp4"
+
+
+
+
 import tictactoeVideo from "/tic tac toe.mp4";
 
 interface Project {
@@ -101,17 +121,87 @@ const Projects = () => {
   const projectsRef = useRef<HTMLDivElement>(null);
 
   const projects: Project[] = [
-    {
-      id: 1,
-      title: "Simple Todo",
-      description: "Interactive portfolio...",
-      image: alex,
-      video: tictactoeVideo,
-      tags: ["Three.js", "React", "GSAP"],
-      liveUrl: "#",
-      sourceUrl: "#",
-    },
-  ];
+  {
+    id: 1,
+    title: "AI Todo App",
+    description: "An intelligent todo app that uses AI to categorize and suggest tasks.",
+    image: todoUsingAiPicture,
+    video: todoUsingAiVideo,
+    tags: ["React", "OpenAI", "CSS"],
+    liveUrl: "#",
+    sourceUrl: "#",
+  },
+  {
+    id: 2,
+    title: "Firebase Todo App",
+    description: "A realtime todo app powered by Firebase for data syncing and storage.",
+    image: todoUsingFirebasePic,
+    video: todoUsingFirebaseVideo,
+    tags: ["React", "Firebase", "CSS"],
+    liveUrl: "#",
+    sourceUrl: "#",
+  },
+  {
+    id: 3,
+    title: "Image Upload MERN",
+    description: "A MERN stack application for uploading and storing images with preview.",
+    image: uploadImageMernPic,
+    video: uploadImageMernVideo,
+    tags: ["MongoDB", "Express", "React", "Node.js"],
+    liveUrl: "#",
+    sourceUrl: "#",
+  },
+  {
+    id: 4,
+    title: "Pantry Tracker",
+    description: "Manage pantry items efficiently with this CRUD-based inventory app.",
+    image: pantryTrackerPic,
+    video: pantryTrackerVideo,
+    tags: ["React", "LocalStorage", "CSS"],
+    liveUrl: "#",
+    sourceUrl: "#",
+  },
+  {
+    id: 5,
+    title: "Paper Rock Scissor Game",
+    description: "A simple and fun rock-paper-scissors game with animated UI.",
+    image: paperrocksicorPic,
+    video: paperrocksicorVideo,
+    tags: ["JavaScript", "React", "CSS"],
+    liveUrl: "#",
+    sourceUrl: "#",
+  },
+  {
+    id: 6,
+    title: "Simple Tic Tac Toe",
+    description: "Classic tic tac toe game with clean design and smooth interactivity.",
+    image: simpleTicTacToePic,
+    video: simpleTicTacToeVideo,
+    tags: ["React", "JavaScript", "CSS"],
+    liveUrl: "#",
+    sourceUrl: "#",
+  },
+  {
+    id: 7,
+    title: "Realtime Tic Tac Toe",
+    description: "Multiplayer realtime tic tac toe game using Socket.IO and Node.js.",
+    image: realtimeTicTacToePic,
+    video: realtimeTicTacToeVideo,
+    tags: ["React", "Socket.IO", "Node.js"],
+    liveUrl: "#",
+    sourceUrl: "#",
+  },
+  {
+    id: 8,
+    title: "Todo Kanban Board",
+    description: "Organize tasks with a draggable Kanban-style board interface.",
+    image: TodoKanbanPic,
+    video: TodoKanbanVideo,
+    tags: ["React", "Drag-and-Drop", "CSS"],
+    liveUrl: "#",
+    sourceUrl: "#",
+  },
+];
 
   useIntersectionObserver({
     target: sectionRef,
