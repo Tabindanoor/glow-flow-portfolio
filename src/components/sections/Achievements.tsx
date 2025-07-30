@@ -115,7 +115,7 @@ const Achievements = () => {
     {
       title: "Cyber Security Certification",
       org:"NAVTTC – National Vocational & Technical Training Commission",
-      url: "https://drive.google.com/file/d/1_1ZrNsBfqOZOkAFw7FQNWh9lusZelI8t/view?usp=sharing",
+      url: "https://drive.google.com/file/d/1-muJZzkhUKtqy6XXKj0t3n2GHpiWFaB-/view?usp=drive_link",
       description: "Information security and ethical hacking"
     },
    

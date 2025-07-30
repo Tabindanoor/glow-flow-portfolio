@@ -82,21 +82,52 @@ const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+const skills: Skill[] = [
+  { name: "React", icon: "🔵", color: "#61DAFB" },
+  { name: "Next.js", icon: "⏭️", color: "#000000" },
+  { name: "Three.js", icon: "🎮", color: "#049EF4" },
+  { name: "TypeScript", icon: "🔷", color: "#3178C6" },
+  { name: "JavaScript", icon: "🟨", color: "#F7DF1E" },
+  { name: "Node.js", icon: "🟩", color: "#539E43" },
+  { name: "Express.js", icon: "🚂", color: "#444444" },
+  { name: "Redux Toolkit", icon: "🎯", color: "#764ABC" },
+  { name: "MongoDB", icon: "🍃", color: "#47A248" },
+  { name: "Firebase", icon: "🔥", color: "#FFCA28" },
+  { name: "Socket.io", icon: "🔌", color: "#010101" },
+  { name: "HTML", icon: "📄", color: "#E34F26" },
+  { name: "CSS/SCSS", icon: "🎨", color: "#CC6699" },
+  { name: "Tailwind CSS", icon: "🌬️", color: "#06B6D4" },
+  { name: "MUI", icon: "📐", color: "#007FFF" },
+  // { name: "PHP", icon: "🐘", color: "#777BB4" },
+  // { name: "Python", icon: "🐍", color: "#3776AB" },
+  // { name: "C++", icon: "💻", color: "#00599C" },
+  // { name: "MSSQL", icon: "🗄️", color: "#CC2927" },
+  { name: "OOP", icon: "📦", color: "#8E44AD" },
+  // { name: "ASP.NET", icon: "⚙️", color: "#512BD4" },
+  { name: "Software Testing", icon: "🧪", color: "#E67E22" },
+  { name: "Computer Networking", icon: "🌐", color: "#2980B9" },
+  // { name: "Kali Linux", icon: "🐱‍💻", color: "#268BDB" },
+  // { name: "WebGL", icon: "🌀", color: "#990000" },
+  // { name: "GSAP", icon: "🟢", color: "#88CE02" },
+  { name: "Git", icon: "🔄", color: "#F05032" },
+  { name: "Figma", icon: "🎨", color: "#F24E1E" },
+  // { name: "Blender", icon: "🎭", color: "#E87D0D" }
+];
 
-  const skills: Skill[] = [
-    { name: "React", icon: "🔵", color: "#61DAFB" },
-    { name: "Three.js", icon: "🎮", color: "#049EF4" },
-    { name: "TypeScript", icon: "🔷", color: "#3178C6" },
-    { name: "GSAP", icon: "🟢", color: "#88CE02" },
-    { name: "WebGL", icon: "🎨", color: "#990000" },
-    { name: "Node.js", icon: "🟩", color: "#539E43" },
-    { name: "CSS/SCSS", icon: "🎨", color: "#CC6699" },
-    { name: "HTML", icon: "📄", color: "#E34F26" },
-    { name: "JavaScript", icon: "🟨", color: "#F7DF1E" },
-    { name: "Git", icon: "🔄", color: "#F05032" },
-    { name: "Blender", icon: "🎭", color: "#E87D0D" },
-    { name: "Figma", icon: "🎨", color: "#F24E1E" }
-  ];
+  // const skills: Skill[] = [
+  //   { name: "React", icon: "🔵", color: "#61DAFB" },
+  //   { name: "Three.js", icon: "🎮", color: "#049EF4" },
+  //   { name: "TypeScript", icon: "🔷", color: "#3178C6" },
+  //   { name: "GSAP", icon: "🟢", color: "#88CE02" },
+  //   { name: "WebGL", icon: "🎨", color: "#990000" },
+  //   { name: "Node.js", icon: "🟩", color: "#539E43" },
+  //   { name: "CSS/SCSS", icon: "🎨", color: "#CC6699" },
+  //   { name: "HTML", icon: "📄", color: "#E34F26" },
+  //   { name: "JavaScript", icon: "🟨", color: "#F7DF1E" },
+  //   { name: "Git", icon: "🔄", color: "#F05032" },
+  //   { name: "Blender", icon: "🎭", color: "#E87D0D" },
+  //   { name: "Figma", icon: "🎨", color: "#F24E1E" }
+  // ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
