@@ -57,7 +57,7 @@ const About = () => {
               {/* <div className="rounded-2xl neon-border"> */}
                 {/* <div className=" h-full bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 flex items-center justify-center"> */}
                   {/* <User className="w-32 h-32 text-neon-cyan" /> */}
-                  <img src={picture} width={"400px"} className='rounded-2xl neon-border' height={"300px"}
+                  <img src={picture} width={"400px"} className='rounded-2xl neon-border mx-auto' height={"300px"}
                   alt="" />
                 {/* </div> */}
               {/* </div> */}

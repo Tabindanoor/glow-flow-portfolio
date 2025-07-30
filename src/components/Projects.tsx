@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, useTexture, Environment } from '@react-three/drei';
@@ -8,36 +8,84 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import alex from "/alex.png"
+import alexPage from "/alexPage.png"
+import paperrocksicor from "/paperrocksicor.png"
 import todoKandan from "/todoKanban.png"
 import elearning from "/elearning.png"
 import music from "/music.png"
-import realtimeTicTacToe from "/realtimeTicTacToe.png"
+import tictactoeVideo from "/tic tac toe.mp4"
+import realtimeTicTacToe1 from "/realtimeTicTacToe1.png"
+import realtimeTicTacToe2 from "/realtimeTicTacToe2.png"
+import realtimeTicTacToe3 from "/realtimeTicTacToe3.png"
+import realtimeTicTacToe4 from "/realtimeTicTacToe4.png"
+import realtimeTicTacToe5 from "/realtimeTicTacToe5.png"
+import simpletictactoe from "/simpletictactoe.png"
 import realtimeEditor from "/realtimeEditor.png"
 import foodOrdering from "/foodOrdering.png"
+
+// interface Project {
+//   id: number;
+//   title: string;
+//   description: string;
+//   image: string;
+//   tags: string[];
+//   liveUrl: string;
+//   sourceUrl: string;
+// }
+
 
 interface Project {
   id: number;
   title: string;
   description: string;
   image: string;
+  video?: string; // <-- added
   tags: string[];
   liveUrl: string;
   sourceUrl: string;
 }
 
-const ProjectCard3D = ({ project, isHovered }: { project: Project; isHovered: boolean }) => {
-  const texture = useTexture(project.image || "/placeholder.svg");
-  const mesh = useRef<THREE.Mesh>(null!);
 
+const ProjectCard3D = ({ project, isHovered }: { project: Project; isHovered: boolean }) => {
+  const mesh = useRef<THREE.Mesh>(null!);
+  const imageTexture = useTexture(project.image || "/placeholder.svg");
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [videoTexture, setVideoTexture] = useState<THREE.VideoTexture | null>(null);
+
+  // Prepare video texture
+  useState(() => {
+    if (project.video) {
+      const video = document.createElement('video');
+      video.src = project.video;
+      video.crossOrigin = 'anonymous';
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      videoRef.current = video;
+      const texture = new THREE.VideoTexture(video);
+      setVideoTexture(texture);
+    }
+  });
+
+  // Handle hover play/pause
+  
+  useEffect(() => {
+  if (isHovered && videoRef.current) {
+    videoRef.current.play();
+  } else if (videoRef.current) {
+    videoRef.current.pause();
+  }
+}, [isHovered]);
+
+  // Animation for rotation and scale
   const animate = () => {
     if (!mesh.current) return;
     const targetRotationY = isHovered ? Math.PI * 0.05 : 0;
     const targetRotationX = isHovered ? -Math.PI * 0.03 : 0;
+    const targetScale = isHovered ? 1.08 : 1;
 
     mesh.current.rotation.y = THREE.MathUtils.lerp(mesh.current.rotation.y, targetRotationY, 0.05);
     mesh.current.rotation.x = THREE.MathUtils.lerp(mesh.current.rotation.x, targetRotationX, 0.05);
-
-    const targetScale = isHovered ? 1.08 : 1;
     const currentScale = mesh.current.scale.x;
     const newScale = THREE.MathUtils.lerp(currentScale, targetScale, 0.1);
     mesh.current.scale.set(newScale, newScale, newScale);
@@ -46,15 +94,15 @@ const ProjectCard3D = ({ project, isHovered }: { project: Project; isHovered: bo
   };
 
   useState(() => {
-    const animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
+    const frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
   });
 
   return (
     <mesh ref={mesh} position={[0, 0, 0]} castShadow receiveShadow>
       <boxGeometry args={[3.5, 2, 0.1]} />
       <meshStandardMaterial
-        map={texture}
+        map={isHovered && videoTexture ? videoTexture : imageTexture}
         metalness={0.2}
         roughness={0.5}
         color="#ffffff"
@@ -63,6 +111,44 @@ const ProjectCard3D = ({ project, isHovered }: { project: Project; isHovered: bo
   );
 };
 
+// const ProjectCard3D = ({ project, isHovered }: { project: Project; isHovered: boolean }) => {
+//   const texture = useTexture(project.image || "/placeholder.svg");
+//   const mesh = useRef<THREE.Mesh>(null!);
+
+//   const animate = () => {
+//     if (!mesh.current) return;
+//     const targetRotationY = isHovered ? Math.PI * 0.05 : 0;
+//     const targetRotationX = isHovered ? -Math.PI * 0.03 : 0;
+
+//     mesh.current.rotation.y = THREE.MathUtils.lerp(mesh.current.rotation.y, targetRotationY, 0.05);
+//     mesh.current.rotation.x = THREE.MathUtils.lerp(mesh.current.rotation.x, targetRotationX, 0.05);
+
+//     const targetScale = isHovered ? 1.08 : 1;
+//     const currentScale = mesh.current.scale.x;
+//     const newScale = THREE.MathUtils.lerp(currentScale, targetScale, 0.1);
+//     mesh.current.scale.set(newScale, newScale, newScale);
+
+//     requestAnimationFrame(animate);
+//   };
+
+//   useState(() => {
+//     const animationFrame = requestAnimationFrame(animate);
+//     return () => cancelAnimationFrame(animationFrame);
+//   });
+
+//   return (
+//     <mesh ref={mesh} position={[0, 0, 0]} castShadow receiveShadow>
+//       <boxGeometry args={[3.5, 2, 0.1]} />
+//       <meshStandardMaterial
+//         map={texture}
+//         metalness={0.2}
+//         roughness={0.5}
+//         color="#ffffff"
+//       />
+//     </mesh>
+//   );
+// };
+
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -70,42 +156,44 @@ const Projects = () => {
   const projectsRef = useRef<HTMLDivElement>(null);
 
   const projects: Project[] = [
-    {
-      id: 1,
-      title: "simple todo brother",
-      description: "Interactive portfolio with Three.js animations and immersive 3D elements for a stunning visual experience.",
-      image: alex,
-      tags: ["Three.js", "React", "GSAP"],
-      liveUrl: "#",
-      sourceUrl: "#"
-    },
-    {
-      id: 2,
-      title: "E-commerce Platform",
-      description: "Fully responsive e-commerce site with 3D product visualization and seamless checkout experience.",
-      image: todoKandan,
-      tags: ["Next.js", "Three.js", "Stripe"],
-      liveUrl: "#",
-      sourceUrl: "#"
-    },
-    {
-      id: 3,
-      title: "3D Data Visualization",
-      description: "Interactive dashboard with 3D charts and real-time data visualization for complex analytics.",
-      image: todoKandan,
-      tags: ["D3.js", "Three.js", "WebGL"],
-      liveUrl: "#",
-      sourceUrl: "#"
-    },
-    {
-      id: 4,
-      title: "WebGL Game",
-      description: "Browser-based 3D game with physics and interactive elements for an engaging user experience.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-      tags: ["WebGL", "Cannon.js", "React"],
-      liveUrl: "#",
-      sourceUrl: "#"
-    }
+   {
+  id: 1,
+  title: "simple todo brother",
+  description: "Interactive portfolio...",
+  image: alex,
+  video: tictactoeVideo, // <-- add your local/public video path
+  tags: ["Three.js", "React", "GSAP"],
+  liveUrl: "#",
+  sourceUrl: "#"
+},
+
+    // {
+    //   id: 2,
+    //   title: "E-commerce Platform",
+    //   description: "Fully responsive e-commerce site with 3D product visualization and seamless checkout experience.",
+    //   image: todoKandan,
+    //   tags: ["Next.js", "Three.js", "Stripe"],
+    //   liveUrl: "#",
+    //   sourceUrl: "#"
+    // },
+    // {
+    //   id: 3,
+    //   title: "3D Data Visualization",
+    //   description: "Interactive dashboard with 3D charts and real-time data visualization for complex analytics.",
+    //   image: todoKandan,
+    //   tags: ["D3.js", "Three.js", "WebGL"],
+    //   liveUrl: "#",
+    //   sourceUrl: "#"
+    // },
+    // {
+    //   id: 4,
+    //   title: "WebGL Game",
+    //   description: "Browser-based 3D game with physics and interactive elements for an engaging user experience.",
+    //   image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    //   tags: ["WebGL", "Cannon.js", "React"],
+    //   liveUrl: "#",
+    //   sourceUrl: "#"
+    // }
   ];
 
   useIntersectionObserver({
