@@ -62,11 +62,11 @@ const About = () => {
                 {/* </div> */}
               {/* </div> */}
               
-              <Card className="absolute -bottom-6 -right-6 bg-card/80 backdrop-blur-sm p-4 neon-border">
+              {/* <Card className=" -bottom-6 -right-6 bg-card/80 backdrop-blur-sm p-4 neon-border">
                 <p className="text-lg font-semibold">
-                  <span className="text-neon-cyan">MERN Stack</span> Developer
+                  <span className="text-neon-cyan w-0.5">MERN Stack</span> Developer
                 </p>
-              </Card>
+              </Card> */}
             </div>
             <div ref={textRef} className="space-y-6">
               <div className="space-y-4">

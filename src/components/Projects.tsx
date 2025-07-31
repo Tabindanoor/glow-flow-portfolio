@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, useTexture, Environment } from '@react-three/drei';
 import * as THREE from 'three';
-import { ExternalLink, Github, X } from 'lucide-react';
+import { Github, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';

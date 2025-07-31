@@ -33,17 +33,17 @@ const scrollToProjects = () => {
   return (
     <div className="min-h-screen relative bg-dark">
       {/* 3D Particle Background */}
-      <ParticleBackground />
+      {/* <ParticleBackground /> */}
       
       {/* Navigation */}
       <Navbar />
       
       {/* Main Content */}
       <main>
-<Hero
-        onProjectClick={scrollToProjects}
-        onContactClick={scrollToContact}
-      />        <About />
+        <Hero   onProjectClick={scrollToProjects}
+           onContactClick={scrollToContact}
+           />     
+         <About />
       <Projects ref={projectsRef} />
         <Skills />
         <Services/>
