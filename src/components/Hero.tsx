@@ -51,7 +51,10 @@ const AnimatedText = () => {
   );
 };
 
-const Hero = () => {
+const Hero = ({ onProjectClick, onContactClick }: {
+  onProjectClick: () => void;
+  onContactClick: () => void;
+}) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -111,7 +114,7 @@ const Hero = () => {
             Building immersive digital experiences with cutting-edge web technologies
           </p>
           
-          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
+          {/* <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
             <a 
               href="#projects" 
               className="btn-primary flex items-center justify-center gap-2 group"
@@ -125,8 +128,24 @@ const Hero = () => {
             >
               Contact Me
             </a>
-          </div>
-        </div>
+          </div> */}
+
+ <div className="flex gap-4">
+        <button
+          onClick={onProjectClick}
+          className="btn-primary"
+        >
+          View Projects
+        </button>
+        {/* <button
+          onClick={onContactClick}
+          className="btn-secondary"
+        >
+          Contact Me
+        </button> */}
+         <button onClick={onContactClick} className="btn-secondary">    Contact Me  </button>
+      </div>        </div>
+
 
       
       </div>

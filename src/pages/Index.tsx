@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import ParticleBackground from '@/components/ParticleBackground';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -13,6 +13,15 @@ import { initScrollAnimations } from '@/lib/animations';
 import Services from '@/components/sections/Services';
 
 const Index = () => {
+    const projectsRef = useRef<HTMLElement>(null);
+const scrollToProjects = () => {
+    projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  const contactRef = useRef<HTMLElement>(null);
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   useEffect(() => {
     // Initialize scroll animations
     initScrollAnimations();
@@ -31,13 +40,15 @@ const Index = () => {
       
       {/* Main Content */}
       <main>
-        <Hero />
-        <About />
-        <Projects />
+<Hero
+        onProjectClick={scrollToProjects}
+        onContactClick={scrollToContact}
+      />        <About />
+      <Projects ref={projectsRef} />
         <Skills />
         <Services/>
         {/* <Testimonials /> */}
-        <Contact />
+        <Contact  ref={contactRef}/>
       </main>
       
       {/* Footer */}

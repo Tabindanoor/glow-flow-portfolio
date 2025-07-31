@@ -45,13 +45,21 @@ const Navbar = () => {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <a 
+          {/* <a 
             href="#" 
             onClick={() => scrollToSection('hero')} 
             className="text-2xl font-space font-bold text-white"
           >
             Port<span className="text-gradient">folio</span>
-          </a>
+          </a> */}
+
+                    <span
+            onClick={() => scrollToSection('hero')}
+            className="cursor-pointer text-2xl font-space font-bold text-white"
+          >
+            Port<span className="text-gradient">folio</span>
+          </span>
+
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, forwardRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, useTexture, Environment } from '@react-three/drei';
@@ -7,7 +7,6 @@ import { ExternalLink, Github, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
-import alex from "/alex.png";
 import todoUsingAiPicture from "/ai todo.png";
 import todoUsingAiVideo from "/ai todo.mp4";
 import todoUsingFirebasePic from "/firebase todo.png";
@@ -24,11 +23,6 @@ import realtimeTicTacToePic from "/realtime tic tac toe.png"
 import realtimeTicTacToeVideo from "/realtime tic tac toe.mp4"
 import TodoKanbanPic from "/todo Kanban.png"
 import TodoKanbanVideo from "/todo kanban.mp4"
-
-
-
-
-import tictactoeVideo from "/tic tac toe.mp4";
 
 interface Project {
   id: number;
@@ -113,7 +107,7 @@ const ProjectCard3D = ({
   );
 };
 
-const Projects = () => {
+const Projects = forwardRef<HTMLElement>((props, ref) => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [modalVideo, setModalVideo] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -213,6 +207,13 @@ const Projects = () => {
     threshold: 0.2,
   });
 
+   useEffect(() => {
+    if (ref && typeof ref !== 'function') {
+      ref.current = sectionRef.current;
+    }
+  }, [ref]);
+
+
   return (
     <section
       id="projects"
@@ -273,8 +274,8 @@ const Projects = () => {
                 <p className="text-gray-300 mb-6">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="bg-neon-purple/10 text-neon-cyan border-neon-purple/20 hover:bg-neon-purple/20">
+                  {project.tags.map((tag,index) => (
+                    <Badge  key={`${tag}-${index}`} variant="outline" className="bg-neon-purple/10 text-neon-cyan border-neon-purple/20 hover:bg-neon-purple/20">
                       {tag}
                     </Badge>
                   ))}
@@ -298,11 +299,27 @@ const Projects = () => {
         </div>
 
         {/* View All Projects */}
-        <div className="flex justify-center mt-12">
-          <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="btn-primary" href="#">
+        {/* <div className="flex justify-center mt-12">
+          <Link to={"https://github.com/Tabindanoor"}>
+          <motion.a  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="btn-primary" href="#">
             View All Projects
           </motion.a>
-        </div>
+          </Link>
+        </div> */}
+
+        <div className="flex justify-center mt-12">
+  <motion.a
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.98 }}
+    className="btn-primary"
+    href="https://github.com/Tabindanoor"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    View All Projects
+  </motion.a>
+</div>
+
       </div>
 
       {/* Modal for Video */}
@@ -321,6 +338,6 @@ const Projects = () => {
       )}
     </section>
   );
-};
+});
 
 export default Projects;

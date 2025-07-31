@@ -1,9 +1,9 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef , forwardRef} from 'react';
 import { fadeInUp, staggerFadeIn } from '@/lib/animations';
 import { useContactForm } from '@/hooks/useContactForm';
 
-const Contact = () => {
+const Contact = forwardRef<HTMLElement>((props, ref) =>{
   const { formData, formStatus, handleChange, handleSubmit } = useContactForm();
   
   const sectionRef = useRef<HTMLElement>(null);
@@ -38,8 +38,14 @@ const Contact = () => {
 
   return (
     <section 
+  ref={(el) => {
+    sectionRef.current = el;
+    if (ref && typeof ref !== "function") {
+      ref.current = el;
+    }
+  }}
       id="contact" 
-      ref={sectionRef}
+      // ref={sectionRef}
       className="py-20 min-h-screen flex items-center bg-gradient-to-b from-dark/95 to-dark"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -158,6 +164,6 @@ const Contact = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Contact;
