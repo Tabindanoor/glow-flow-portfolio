@@ -31,7 +31,7 @@ const scrollToProjects = () => {
   }, []);
   
   return (
-    <div className="min-h-screen relative bg-dark">
+    <div className="min-h-screen relative ">
       {/* 3D Particle Background */}
       {/* <ParticleBackground /> */}
       

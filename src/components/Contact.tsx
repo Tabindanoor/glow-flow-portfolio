@@ -46,7 +46,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) =>{
   }}
       id="contact" 
       // ref={sectionRef}
-      className="py-20 min-h-screen flex items-center bg-gradient-to-b from-dark/95 to-dark"
+      className="py-20 min-h-screen flex items-center bg-gradient-to-b from-dark/95 to-dark bg-pink-100"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 ref={headingRef} className="section-heading text-center">
@@ -66,12 +66,12 @@ const Contact = forwardRef<HTMLElement>((props, ref) =>{
               Have a project idea or just want to say hello? Feel free to reach out!
             </p>
 
-            <div className="flex space-x-4">
+            <div className="flex flex-col  sm:flex-row  sm:space-x-4">
               {[ 
                 { icon: "🤝", label: "LinkedIn", value: <a href="https://www.linkedin.com/in/tabinda-noor-935429237/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">LinkedIn.com</a> }, 
                 { icon: "📧", label: "Email", value: "tabindanoor415@gmail.com" }
               ].map((contact) => (
-                <div key={contact.label} className="neon-card p-4 flex-1">
+                <div key={contact.label} className="neon-card p-4 my-2 sm:my-0  flex-1 ">
                   <div className="mb-2">{contact.icon}</div>
                   <h4 className="text-sm font-medium text-gray-400">{contact.label}</h4>
                   <p className="text-white">{contact.value}</p>
@@ -89,7 +89,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) =>{
               onSubmit={handleSubmit}
               className="neon-card p-6 rounded-2xl"
             >
-              <div className="space-y-4">
+              <div className="space-y-4 ">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                     Name
