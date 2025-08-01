@@ -1,6 +1,5 @@
 
-import { useEffect, useRef } from 'react';
-import ParticleBackground from '@/components/ParticleBackground';
+import { useEffect, useRef, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -11,9 +10,11 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { initScrollAnimations } from '@/lib/animations';
 import Services from '@/components/sections/Services';
+import Loader from '@/components/Loader';
 
 const Index = () => {
-    const projectsRef = useRef<HTMLElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const projectsRef = useRef<HTMLElement>(null);
 const scrollToProjects = () => {
     projectsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -30,11 +31,12 @@ const scrollToProjects = () => {
     document.title = "Creative Portfolio | 3D Interactive Experience";
   }, []);
   
+  if (isLoading) {
+    return <Loader onComplete={() => setIsLoading(false)} />;
+  }
+
   return (
     <div className="min-h-screen relative ">
-      {/* 3D Particle Background */}
-      {/* <ParticleBackground /> */}
-      
       {/* Navigation */}
       <Navbar />
       
