@@ -214,6 +214,27 @@ const Projects = forwardRef<HTMLElement>((props, ref) => {
   }, [ref]);
 
 
+
+  useEffect(() => {
+  // Preload all videos
+  projects.forEach((project) => {
+    if (project.video) {
+      const video = document.createElement('video');
+      video.src = project.video;
+      video.preload = 'auto';
+      video.muted = true;
+      video.load();
+    }
+  });
+
+  // Preload all images
+  projects.forEach((project) => {
+    const img = new Image();
+    img.src = project.image;
+  });
+}, []);
+
+
   return (
     <section
       id="projects"
@@ -326,7 +347,7 @@ const Projects = forwardRef<HTMLElement>((props, ref) => {
       {modalVideo && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
           <div className="relative max-w-4xl w-full aspect-video">
-            <video src={modalVideo} autoPlay loop controls className="w-full h-full object-contain rounded-lg shadow-lg" />
+            <video src={modalVideo} autoPlay loop controls preload='auto' className="w-full h-full object-contain rounded-lg shadow-lg" />
             <button
               onClick={() => setModalVideo(null)}
               className="absolute top-2 right-2 text-white bg-black/50 hover:bg-black/80 rounded-full p-1"
