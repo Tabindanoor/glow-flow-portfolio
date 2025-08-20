@@ -161,7 +161,7 @@ const Projects = forwardRef<HTMLElement>((props, ref) => {
     {
       id: 9,
       title: "Image to text, audio , Video ",
-      description: "Organize tasks with a draggable Kanban-style board interface.",
+      description: "",
       image: TodoKanbanPic,
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       liveUrl: "https://drive.google.com/file/d/1H1DRE4WwGcE4qhk0hWkZK1zC6xa0VUZK/view?usp=drive_link",
