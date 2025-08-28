@@ -157,6 +157,15 @@ const Projects = forwardRef<HTMLElement>((props, ref) => {
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       liveUrl: "https://drive.google.com/file/d/1H1DRE4WwGcE4qhk0hWkZK1zC6xa0VUZK/view?usp=drive_link",
       sourceUrl: "https://github.com/Tabindanoor/NEXT-TODO-",
+    },
+     {
+      id: 8,
+      title: "Todo Kanban Board",
+      description: "Organize tasks with a draggable Kanban-style board interface.",
+      image: TodoKanbanPic,
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      liveUrl: "https://drive.google.com/file/d/1H1DRE4WwGcE4qhk0hWkZK1zC6xa0VUZK/view?usp=drive_link",
+      sourceUrl: "https://github.com/Tabindanoor/NEXT-TODO-",
     }
     
         
