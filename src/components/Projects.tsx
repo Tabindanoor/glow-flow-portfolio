@@ -158,7 +158,6 @@ const Projects = forwardRef<HTMLElement>((props, ref) => {
       liveUrl: "https://drive.google.com/file/d/1H1DRE4WwGcE4qhk0hWkZK1zC6xa0VUZK/view?usp=drive_link",
       sourceUrl: "https://github.com/Tabindanoor/NEXT-TODO-",
     },
-    i am going to refactor resend logic too b used in deployement without supabase 
      
    
         
