@@ -52,7 +52,6 @@ export const useContactForm = () => {
 
 
 
-  /this is to use without supabse 
 
 // const handleSubmit = async (e: React.FormEvent) => {
 //   e.preventDefault();
