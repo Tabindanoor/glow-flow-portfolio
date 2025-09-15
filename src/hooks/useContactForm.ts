@@ -51,7 +51,6 @@ export const useContactForm = () => {
   };
 
 
-// i am going to prepare for DSA
 
 // const handleSubmit = async (e: React.FormEvent) => {
 //   e.preventDefault();
