@@ -49,7 +49,7 @@ export const useContactForm = () => {
       setFormStatus('idle');
     }, 3000);
   };
-// this code is to use sending mail without supabase 
+
 
 
 // const handleSubmit = async (e: React.FormEvent) => {
