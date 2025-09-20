@@ -52,21 +52,12 @@ const About = () => {
 
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-16">
-            {/* <div ref={imageRef} className="relative"> */}
             <div>
-              {/* <div className="rounded-2xl neon-border"> */}
-                {/* <div className=" h-full bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 flex items-center justify-center"> */}
-                  {/* <User className="w-32 h-32 text-neon-cyan" /> */}
-                  <img src={picture} width={"400px"} className='rounded-2xl neon-border mx-auto' height={"300px"}
+                   <img src={picture} width={"400px"} className='rounded-2xl neon-border mx-auto' height={"300px"}
                   alt="" />
-                {/* </div> */}
-              {/* </div> */}
               
-              {/* <Card className=" -bottom-6 -right-6 bg-card/80 backdrop-blur-sm p-4 neon-border">
-                <p className="text-lg font-semibold">
-                  <span className="text-neon-cyan w-0.5">MERN Stack</span> Developer
-                </p>
-              </Card> */}
+              
+             
             </div>
             <div ref={textRef} className="space-y-6">
               <div className="space-y-4">
