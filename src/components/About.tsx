@@ -44,7 +44,6 @@ const About = () => {
       className="py-20 bg-gradient-to-b from-dark to-dark/95"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-24 space-y-32">
-        {/* About Me Section */}
         <div>
           <h2 ref={headingRef} className="section-heading text-center">
             About <span className="text-neon-cyan">Me</span>
