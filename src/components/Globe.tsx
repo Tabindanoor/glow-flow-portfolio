@@ -5,7 +5,6 @@ export default function Globe() {
   const mountRef = useRef(null);
   
   useEffect(() => {
-    // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
