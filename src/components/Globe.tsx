@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
+
+// this component is not included in my portfolio
 export default function Globe() {
   const mountRef = useRef(null);
   
