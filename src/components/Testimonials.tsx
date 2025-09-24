@@ -4,6 +4,9 @@ import { fadeInUp, staggerFadeIn } from '@/lib/animations';
 import { Card, CardContent } from '@/components/ui/card';
 import { Quote } from 'lucide-react';
 
+
+
+// دعلعتعد ہ
 interface Testimonial {
   id: number;
   quote: string;
