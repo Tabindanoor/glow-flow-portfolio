@@ -7,7 +7,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
-// testimonials and globe is not used 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
