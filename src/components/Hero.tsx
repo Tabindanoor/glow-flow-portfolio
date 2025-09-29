@@ -113,22 +113,6 @@ const Hero = ({ onProjectClick, onContactClick }: {
           >
             Building immersive digital experiences with cutting-edge web technologies
           </p>
-          
-          {/* <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
-            <a 
-              href="#projects" 
-              className="btn-primary flex items-center justify-center gap-2 group"
-            >
-              View Projects
-              <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-            </a>
-            <a 
-              href="#contact" 
-              className="btn-secondary"
-            >
-              Contact Me
-            </a>
-          </div> */}
 
  <div className="flex gap-4">
         <button
@@ -137,12 +121,7 @@ const Hero = ({ onProjectClick, onContactClick }: {
         >
           View Projects
         </button>
-        {/* <button
-          onClick={onContactClick}
-          className="btn-secondary"
-        >
-          Contact Me
-        </button> */}
+       
          <button onClick={onContactClick} className="btn-secondary">    Contact Me  </button>
       </div>        </div>
 
