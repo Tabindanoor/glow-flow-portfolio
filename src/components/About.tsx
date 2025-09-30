@@ -55,8 +55,6 @@ const About = () => {
                    <img src={picture} width={"400px"} className='rounded-2xl neon-border mx-auto' height={"300px"}
                   alt="" />
               
-              
-             
             </div>
             <div ref={textRef} className="space-y-6">
               <div className="space-y-4">

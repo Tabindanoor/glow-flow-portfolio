@@ -39,7 +39,6 @@ const Footer = () => {
   const socialLinks = [
     { name: "GitHub", href: "https://github.com/Tabindanoor", icon: Github },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/tabinda-noor-935429237/", icon: Linkedin },
-    // { name: "Twitter", href: "#", icon: Twitter },
     { name: "Instagram", href: "https://www.instagram.com/noortabinda/", icon: Instagram },
     { name: "Email", href: "tabindanoor415@gmail.com", icon: Mail }
   ];
@@ -107,9 +106,6 @@ const Footer = () => {
               <a href="mailto:tabindanoor415@gmail.com" className="text-gray-400 hover:text-neon-cyan transition-colors duration-300">
                 tabindanoor415@gmail.com
               </a>
-              {/* <p className="text-gray-400">
-                +1 (555) 123-4567
-              </p> */}
             </div>
             
             <button 
